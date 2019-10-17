@@ -3,50 +3,30 @@ var file = require('gulp-file');
 var concat = require('gulp-concat');
 var ts = require('gulp-typescript');
 
+var context = require('./context.js');
 var headerPipes = require('./header-pipes.js');
-
-var OUTPUT_DIR = 'artifacts/ts';
 var MODULES = require('./modules_metadata.json');
-var TS_PATH = './ts/dx.all.d.ts';
 
-var widgetNameByPath = exports.widgetNameByPath = function(widgetPath) {
-    if(widgetPath.startsWith('ui.dx') || widgetPath.startsWith('viz.dx')) {
-        var parts = widgetPath.split('.');
-        return parts.length === 2 ? parts[1] : '';
-    }
-};
-
-exports.getAugmentationOptionsPath = (widgetPath) => widgetNameByPath(widgetPath) ? getWidgetOptionsPath(widgetPath) : '';
-
-var getWidgetOptionsPath = (widgetPath) => `${widgetPath}Options`;
-
-exports.generateJQueryAugmentation = function(globalWidgetPath) {
-    var widgetName = widgetNameByPath(globalWidgetPath);
-    if(!widgetName) return '';
-
-    return `interface JQuery {\n` +
-           `    ${widgetName}(): JQuery;\n` +
-           `    ${widgetName}(options: "instance"): DevExpress.${globalWidgetPath};\n` +
-           `    ${widgetName}(options: string): any;\n` +
-           `    ${widgetName}(options: string, ...params: any[]): any;\n` +
-           `    ${widgetName}(options: DevExpress.${getWidgetOptionsPath(globalWidgetPath)}): JQuery;\n` +
-           `}\n`;
-};
+var packagePath = context.RESULT_NPM_PATH + '/devextreme';
+var OUTPUT_DIR = 'artifacts/ts';
+var TS_BUNDLE_FILE = './ts/dx.all.d.ts';
+var TS_BUNDLE_SOURCES = [TS_BUNDLE_FILE, './ts/aliases.d.ts'];
+var TS_MODULES_GLOB = './js/**/*.d.ts';
 
 gulp.task('ts-vendor', function() {
     return gulp.src('./ts/vendor/*')
         .pipe(gulp.dest(OUTPUT_DIR));
 });
 
-gulp.task('ts-sources', function() {
-    return gulp.src([TS_PATH, './ts/aliases.d.ts'])
+gulp.task('ts-bundle', function() {
+    return gulp.src(TS_BUNDLE_SOURCES)
         .pipe(concat("dx.all.d.ts"))
         .pipe(headerPipes.bangLicense())
         .pipe(gulp.dest(OUTPUT_DIR));
 });
 
-gulp.task('ts-jquery-check', gulp.series('ts-sources', function() {
-    var content = `/// <reference path="${TS_PATH}" />\n`;
+gulp.task('ts-jquery-check', gulp.series('ts-bundle', function checkJQueryAugmentations() {
+    var content = `/// <reference path="${TS_BUNDLE_FILE}" />\n`;
 
     content += MODULES
         .map(function(moduleMeta) {
@@ -73,10 +53,76 @@ gulp.task('ts-jquery-check', gulp.series('ts-sources', function() {
 }));
 
 gulp.task('ts-compilation-check', function() {
-    return gulp.src(TS_PATH)
+    return gulp.src(TS_BUNDLE_FILE)
         .pipe(ts({
             noEmitOnError: true
         }, ts.reporter.fullReporter()));
 });
 
-gulp.task('ts', gulp.series('ts-vendor', 'ts-sources', 'ts-jquery-check', 'ts-compilation-check'));
+gulp.task('ts-modules', function generateModules() {
+
+    return gulp.src(TS_MODULES_GLOB)
+        .pipe(headerPipes.starLicense())
+        .pipe(gulp.dest(packagePath));
+});
+
+gulp.task('ts-agnular-hack', function() {
+    return file('bundles/dx.all.js', '// This file is required to compile devextreme-angular', { src: true })
+        .pipe(headerPipes.starLicense())
+        .pipe(gulp.dest(packagePath));
+});
+
+gulp.task('ts-sources', gulp.series('ts-modules', 'ts-bundle', 'ts-agnular-hack'));
+
+gulp.task('ts-modules-check', gulp.series('ts-modules', function checkModules() {
+    var content = 'import $ from \'jquery\';\n';
+
+    content += MODULES.map(function(moduleMeta) {
+        var modulePath = '\'./npm/devextreme/' + moduleMeta.name + '\'';
+        if(!moduleMeta.exports) {
+            return 'import ' + modulePath + ';';
+        }
+
+        return Object.keys(moduleMeta.exports).map(function(name) {
+            const exportEntry = moduleMeta.exports[name];
+
+            var uniqueIdentifier = moduleMeta.name
+                .replace(/\./g, '_')
+                .split('/')
+                .concat([name])
+                .join('__');
+
+            var importIdentifier = name === 'default' ? uniqueIdentifier : `{ ${name} as ${uniqueIdentifier} }`;
+
+            const importStatement = `import ${importIdentifier} from ${modulePath};`;
+            var widgetName = widgetNameByPath(exportEntry.path);
+            if(exportEntry.isWidget && widgetName) {
+                return `$('<div>').${widgetName}();\n${importStatement}`;
+            }
+
+            return importStatement;
+        }).join('\n');
+    }).join('\n');
+
+    return file('artifacts/modules.ts', content, { src: true })
+        .pipe(ts({
+            allowSyntheticDefaultImports: true,
+            noEmitOnError: true
+        }, ts.reporter.fullReporter()));
+}));
+
+gulp.task('ts', gulp.series(
+    'ts-vendor',
+    'ts-bundle',
+    'ts-jquery-check',
+    'ts-compilation-check'
+));
+
+function widgetNameByPath(widgetPath) {
+    if(widgetPath.startsWith('ui.dx') || widgetPath.startsWith('viz.dx')) {
+        var parts = widgetPath.split('.');
+        return parts.length === 2 ? parts[1] : '';
+    }
+}
+
+exports.GLOB_TS = TS_MODULES_GLOB;
