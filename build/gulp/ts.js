@@ -73,8 +73,21 @@ gulp.task('ts-compilation-check', function() {
 });
 
 gulp.task('ts-modules', function generateModules() {
+    var bundleImport = "import DevExpress from '../bundles/dx.all';";
 
     return gulp.src(TS_MODULES_GLOB)
+        /* legacy modules */
+        .pipe(file("events/click.d.ts", bundleImport))
+        .pipe(file("events/contextmenu.d.ts", bundleImport))
+        .pipe(file("events/dblclick.d.ts", bundleImport))
+        .pipe(file("events/drag.d.ts", bundleImport))
+        .pipe(file("events/hold.d.ts", bundleImport))
+        .pipe(file("events/hover.d.ts", bundleImport))
+        .pipe(file("events/pointer.d.ts", bundleImport))
+        .pipe(file("events/swipe.d.ts", bundleImport))
+        .pipe(file("events/transform.d.ts", bundleImport))
+        .pipe(file("integration/jquery.d.ts", "import 'jquery';"))
+
         .pipe(headerPipes.starLicense())
         .pipe(gulp.dest(PACKAGE_DIR));
 });
