@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var file = require('gulp-file');
+var footer = require('gulp-footer');
 var concat = require('gulp-concat');
+var path = require('path');
+var replace = require('gulp-replace');
 var ts = require('gulp-typescript');
 
 var context = require('./context.js');
@@ -8,22 +11,35 @@ var headerPipes = require('./header-pipes.js');
 var MODULES = require('./modules_metadata.json');
 
 var packagePath = context.RESULT_NPM_PATH + '/devextreme';
-var OUTPUT_DIR = 'artifacts/ts';
+var OUTPUT_ARTIFACTS_DIR = 'artifacts/ts';
+var OUTPUT_PACKAGE_DIR = path.join(packagePath, 'bundles');
 var TS_BUNDLE_FILE = './ts/dx.all.d.ts';
 var TS_BUNDLE_SOURCES = [TS_BUNDLE_FILE, './ts/aliases.d.ts'];
 var TS_MODULES_GLOB = './js/**/*.d.ts';
 
 gulp.task('ts-vendor', function() {
     return gulp.src('./ts/vendor/*')
-        .pipe(gulp.dest(OUTPUT_DIR));
+        .pipe(gulp.dest(OUTPUT_ARTIFACTS_DIR));
 });
 
-gulp.task('ts-bundle', function() {
+gulp.task('ts-agnular-hack', function() {
+    return file('dx.all.js', '// This file is required to compile devextreme-angular', { src: true })
+        .pipe(headerPipes.starLicense())
+        .pipe(gulp.dest(OUTPUT_PACKAGE_DIR));
+});
+
+gulp.task('ts-bundle', gulp.series('ts-agnular-hack', function writeTsBundle() {
     return gulp.src(TS_BUNDLE_SOURCES)
         .pipe(concat("dx.all.d.ts"))
         .pipe(headerPipes.bangLicense())
-        .pipe(gulp.dest(OUTPUT_DIR));
-});
+        .pipe(gulp.dest(OUTPUT_ARTIFACTS_DIR)) // will be copied to the npm's /dist folder by another task
+        .pipe(replace('/*!', '/**'))
+        .pipe(replace(/\/\*\s*#StartGlobalDeclaration\s*\*\//g, 'declare global {'))
+        .pipe(replace(/\/\*\s*#EndGlobalDeclaration\s*\*\//g, '}'))
+        .pipe(replace(/\/\*\s*#StartJQueryAugmentation\s*\*\/[\s\S]*\/\*\s*#EndJQueryAugmentation\s*\*\//g, ''))
+        .pipe(footer('\nexport default DevExpress;'))
+        .pipe(gulp.dest(OUTPUT_PACKAGE_DIR));
+}));
 
 gulp.task('ts-jquery-check', gulp.series('ts-bundle', function checkJQueryAugmentations() {
     var content = `/// <reference path="${TS_BUNDLE_FILE}" />\n`;
@@ -66,13 +82,7 @@ gulp.task('ts-modules', function generateModules() {
         .pipe(gulp.dest(packagePath));
 });
 
-gulp.task('ts-agnular-hack', function() {
-    return file('bundles/dx.all.js', '// This file is required to compile devextreme-angular', { src: true })
-        .pipe(headerPipes.starLicense())
-        .pipe(gulp.dest(packagePath));
-});
-
-gulp.task('ts-sources', gulp.series('ts-modules', 'ts-bundle', 'ts-agnular-hack'));
+gulp.task('ts-sources', gulp.series('ts-modules', 'ts-bundle'));
 
 gulp.task('ts-modules-check', gulp.series('ts-modules', function checkModules() {
     var content = 'import $ from \'jquery\';\n';
