@@ -343,18 +343,8 @@ var ColumnHeadersViewFilterSyncExtender = {
 module.exports = {
     defaultOptions: function() {
         return {
-            /**
-             * @name GridBaseOptions.filterValue
-             * @type Filter expression
-             * @default null
-             * @fires GridBase.onOptionChanged
-             */
             filterValue: null,
 
-            /**
-             * @name GridBaseOptions.filterSyncEnabled
-             * @type boolean
-             */
             filterSyncEnabled: "auto"
         };
     },
