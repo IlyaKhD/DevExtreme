@@ -1,7 +1,9 @@
 var gulp = require('gulp');
 var file = require('gulp-file');
 var footer = require('gulp-footer');
+const fs = require('fs');
 var concat = require('gulp-concat');
+var map = require('map-stream');
 var path = require('path');
 var replace = require('gulp-replace');
 var ts = require('gulp-typescript');
@@ -10,9 +12,10 @@ var context = require('./context.js');
 var headerPipes = require('./header-pipes.js');
 var MODULES = require('./modules_metadata.json');
 
-var packagePath = context.RESULT_NPM_PATH + '/devextreme';
+var PACKAGE_DIR = context.RESULT_NPM_PATH + '/devextreme';
+var DIST_DIR = PACKAGE_DIR + '/dist';
 var OUTPUT_ARTIFACTS_DIR = 'artifacts/ts';
-var OUTPUT_PACKAGE_DIR = path.join(packagePath, 'bundles');
+var OUTPUT_PACKAGE_DIR = path.join(PACKAGE_DIR, 'bundles');
 var TS_BUNDLE_FILE = './ts/dx.all.d.ts';
 var TS_BUNDLE_SOURCES = [TS_BUNDLE_FILE, './ts/aliases.d.ts'];
 var TS_MODULES_GLOB = './js/**/*.d.ts';
@@ -22,15 +25,9 @@ gulp.task('ts-vendor', function() {
         .pipe(gulp.dest(OUTPUT_ARTIFACTS_DIR));
 });
 
-gulp.task('ts-agnular-hack', function() {
-    return file('dx.all.js', '// This file is required to compile devextreme-angular', { src: true })
-        .pipe(headerPipes.starLicense())
-        .pipe(gulp.dest(OUTPUT_PACKAGE_DIR));
-});
-
-gulp.task('ts-bundle', gulp.series('ts-agnular-hack', function writeTsBundle() {
+gulp.task('ts-bundle', function writeTsBundle() {
     return gulp.src(TS_BUNDLE_SOURCES)
-        .pipe(concat("dx.all.d.ts"))
+        .pipe(concat('dx.all.d.ts'))
         .pipe(headerPipes.bangLicense())
         .pipe(gulp.dest(OUTPUT_ARTIFACTS_DIR)) // will be copied to the npm's /dist folder by another task
         .pipe(replace('/*!', '/**'))
@@ -39,10 +36,10 @@ gulp.task('ts-bundle', gulp.series('ts-agnular-hack', function writeTsBundle() {
         .pipe(replace(/\/\*\s*#StartJQueryAugmentation\s*\*\/[\s\S]*\/\*\s*#EndJQueryAugmentation\s*\*\//g, ''))
         .pipe(footer('\nexport default DevExpress;'))
         .pipe(gulp.dest(OUTPUT_PACKAGE_DIR));
-}));
+});
 
 gulp.task('ts-jquery-check', gulp.series('ts-bundle', function checkJQueryAugmentations() {
-    var content = `/// <reference path="${TS_BUNDLE_FILE}" />\n`;
+    var content = `/// <reference path='${TS_BUNDLE_FILE}' />\n`;
 
     content += MODULES
         .map(function(moduleMeta) {
@@ -58,7 +55,7 @@ gulp.task('ts-jquery-check', gulp.series('ts-bundle', function checkJQueryAugmen
                 if(!widgetName) { return ''; }
 
                 return `$().${widgetName}();\n` +
-                    `<DevExpress.${globalPath}>$().${widgetName}("instance");\n`;
+                    `<DevExpress.${globalPath}>$().${widgetName}('instance');\n`;
             }).join('');
         }).join('\n');
 
@@ -79,10 +76,27 @@ gulp.task('ts-modules', function generateModules() {
 
     return gulp.src(TS_MODULES_GLOB)
         .pipe(headerPipes.starLicense())
-        .pipe(gulp.dest(packagePath));
+        .pipe(gulp.dest(PACKAGE_DIR));
 });
 
-gulp.task('ts-sources', gulp.series('ts-modules', 'ts-bundle'));
+gulp.task('ts-angular-hack', function() {
+    return gulp.src([PACKAGE_DIR + '/**/*.d.ts', '!' + DIST_DIR + '/**/*.*'])
+        .pipe(map(function(file, callback) {
+            const jsPath = file.path.replace('.d.ts', '.js');
+            if(fs.existsSync(jsPath)) {
+                callback();
+                return;
+            }
+
+            file.path = jsPath;
+            file.contents = Buffer.from('// This file is required to compile devextreme-angular');
+            callback(null, file);
+        }))
+        .pipe(headerPipes.starLicense())
+        .pipe(gulp.dest(PACKAGE_DIR));
+});
+
+gulp.task('ts-sources', gulp.series('ts-modules', 'ts-bundle', 'ts-angular-hack'));
 
 gulp.task('ts-modules-check', gulp.series('ts-modules', function checkModules() {
     var content = 'import $ from \'jquery\';\n';
