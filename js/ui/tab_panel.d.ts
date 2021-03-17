@@ -19,6 +19,32 @@ import dxMultiView, {
     dxMultiViewOptions
 } from './multi_view';
 
+export interface TitleClickEvent {
+    readonly component: dxTabPanel;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly event?: TEvent
+}
+
+export interface TitleHoldEvent {
+    readonly component: dxTabPanel;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly event?: TEvent;
+}
+
+export interface TitleRenderedEvent {
+    readonly component: dxTabPanel;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+}
+
 export interface dxTabPanelOptions extends dxMultiViewOptions<dxTabPanel> {
     /**
      * @docid
@@ -71,7 +97,7 @@ export interface dxTabPanelOptions extends dxMultiViewOptions<dxTabPanel> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onTitleClick?: ((e: { component?: dxTabPanel, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, event?: TEvent }) => any) | string;
+    onTitleClick?: ((e: TitleClickEvent) => void) | string;
     /**
      * @docid
      * @extends Action
@@ -83,7 +109,7 @@ export interface dxTabPanelOptions extends dxMultiViewOptions<dxTabPanel> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onTitleHold?: ((e: { component?: dxTabPanel, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, event?: TEvent }) => any);
+    onTitleHold?: ((e: TitleHoldEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -94,7 +120,7 @@ export interface dxTabPanelOptions extends dxMultiViewOptions<dxTabPanel> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onTitleRendered?: ((e: { component?: dxTabPanel, element?: TElement, model?: any, itemData?: any, itemElement?: TElement }) => any);
+    onTitleRendered?: ((e: TitleRenderedEvent) => void);
     /**
      * @docid
      * @default false

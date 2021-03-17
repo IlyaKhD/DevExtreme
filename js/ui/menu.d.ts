@@ -14,6 +14,35 @@ import dxMenuBase, {
     dxMenuBaseOptions
 } from './context_menu/ui.menu_base';
 
+export interface SubmenuHiddenEvent {
+    readonly component: dxMenu;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly rootItem?: TElement;
+}
+
+export interface SubmenuHidingEvent {
+    readonly component: dxMenu;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly rootItem?: TElement;
+    cancel?: boolean;
+}
+
+export interface SubmenuShowingEvent {
+    readonly component: dxMenu;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly rootItem?: TElement;
+}
+
+export interface onSubmenuShownEvent {
+    readonly component: dxMenu;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly rootItem?: TElement;
+}
+
 export interface dxMenuOptions extends dxMenuBaseOptions<dxMenu> {
     /**
      * @docid
@@ -51,7 +80,7 @@ export interface dxMenuOptions extends dxMenuBaseOptions<dxMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onSubmenuHidden?: ((e: { component?: dxMenu, element?: TElement, model?: any, rootItem?: TElement }) => any);
+    onSubmenuHidden?: ((e: SubmenuHiddenEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -62,7 +91,7 @@ export interface dxMenuOptions extends dxMenuBaseOptions<dxMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onSubmenuHiding?: ((e: { component?: dxMenu, element?: TElement, model?: any, rootItem?: TElement, cancel?: boolean }) => any);
+    onSubmenuHiding?: ((e: SubmenuHidingEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -72,7 +101,7 @@ export interface dxMenuOptions extends dxMenuBaseOptions<dxMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onSubmenuShowing?: ((e: { component?: dxMenu, element?: TElement, model?: any, rootItem?: TElement }) => any);
+    onSubmenuShowing?: ((e: SubmenuShowingEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -82,7 +111,7 @@ export interface dxMenuOptions extends dxMenuBaseOptions<dxMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onSubmenuShown?: ((e: { component?: dxMenu, element?: TElement, model?: any, rootItem?: TElement }) => any);
+    onSubmenuShown?: ((e: onSubmenuShownEvent) => void);
     /**
      * @docid
      * @type Enums.Orientation

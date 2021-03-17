@@ -14,6 +14,16 @@ import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
 
+export interface ContextMenuPreparingEvent {
+    readonly component: dxPivotGridFieldChooser;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly area?: string;
+    readonly field?: PivotGridDataSourceField;
+    readonly event?: TEvent;
+    items?: Array<any>;
+}
+
 export interface dxPivotGridFieldChooserOptions extends WidgetOptions<dxPivotGridFieldChooser> {
     /**
      * @docid
@@ -127,7 +137,7 @@ export interface dxPivotGridFieldChooserOptions extends WidgetOptions<dxPivotGri
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onContextMenuPreparing?: ((e: { component?: dxPivotGridFieldChooser, element?: TElement, model?: any, items?: Array<any>, area?: string, field?: PivotGridDataSourceField, event?: TEvent }) => any);
+    onContextMenuPreparing?: ((e: ContextMenuPreparingEvent) => void);
     /**
      * @docid
      * @default 500

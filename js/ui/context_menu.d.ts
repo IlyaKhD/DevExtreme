@@ -26,6 +26,40 @@ import {
     dxMenuBaseItem
 } from './menu';
 
+export interface HiddenEvent {
+    readonly component: dxContextMenu;
+    readonly element: TElement;
+    readonly model?: any;
+}
+
+export interface HidingEvent {
+    readonly component: dxContextMenu;
+    readonly element: TElement;
+    readonly model?: any;
+    cancel?: boolean;
+}
+
+export interface PositioningEvent {
+    readonly component: dxContextMenu;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly event?: TEvent;
+    readonly position: positionConfig;
+}
+
+export interface ShowingEvent {
+    readonly component: dxContextMenu;
+    readonly element: TElement;
+    readonly model?: any;
+    cancel?: boolean;
+}
+
+export interface ShownEvent {
+    readonly component: dxContextMenu;
+    readonly element: TElement;
+    readonly model?: any;
+}
+
 export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
     /**
      * @docid
@@ -56,7 +90,7 @@ export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onHidden?: ((e: { component?: dxContextMenu, element?: TElement, model?: any }) => any);
+    onHidden?: ((e: HiddenEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -66,7 +100,7 @@ export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onHiding?: ((e: { component?: dxContextMenu, element?: TElement, model?: any, cancel?: boolean }) => any);
+    onHiding?: ((e: HidingEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -77,7 +111,7 @@ export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onPositioning?: ((e: { component?: dxContextMenu, element?: TElement, model?: any, event?: TEvent, position?: positionConfig }) => any);
+    onPositioning?: ((e: PositioningEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -87,7 +121,7 @@ export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onShowing?: ((e: { component?: dxContextMenu, element?: TElement, model?: any, cancel?: boolean }) => any);
+    onShowing?: ((e: ShowingEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -95,7 +129,7 @@ export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onShown?: ((e: { component?: dxContextMenu, element?: TElement, model?: any }) => any);
+    onShown?: ((e: ShownEvent) => void);
     /**
      * @docid
      * @default { my: 'top left', at: 'top left' }

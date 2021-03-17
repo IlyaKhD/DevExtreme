@@ -21,6 +21,72 @@ import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
 
+export interface CellClickEvent {
+    readonly component: dxPivotGrid;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly area?: string;
+    readonly cellElement?: TElement;
+    readonly cell?: dxPivotGridPivotGridCell;
+    readonly rowIndex?: number;
+    readonly columnIndex?: number;
+    readonly columnFields?: Array<PivotGridDataSourceField>;
+    readonly rowFields?: Array<PivotGridDataSourceField>;
+    readonly dataFields?: Array<PivotGridDataSourceField>;
+    readonly event?: TEvent;
+    cancel?: boolean
+}
+
+export interface CellPreparedEvent {
+    readonly component: dxPivotGrid;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly area?: string;
+    readonly cellElement?: TElement;
+    readonly cell?: dxPivotGridPivotGridCell;
+    readonly rowIndex?: number;
+    readonly columnIndex?: number
+}
+
+export interface ContextMenuPreparingEvent {
+    readonly component: dxPivotGrid;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly area?: string;
+    readonly cell?: dxPivotGridPivotGridCell;
+    readonly cellElement?: TElement;
+    readonly columnIndex?: number;
+    readonly rowIndex?: number;
+    readonly dataFields?: Array<PivotGridDataSourceField>;
+    readonly rowFields?: Array<PivotGridDataSourceField>;
+    readonly columnFields?: Array<PivotGridDataSourceField>;
+    readonly field?: PivotGridDataSourceField;
+    items?: Array<any>;
+}
+
+export interface ExportedEvent {
+    readonly component: dxPivotGrid;
+    readonly element: TElement;
+    readonly model?: any;
+}
+
+export interface ExportingEvent {
+    readonly component: dxPivotGrid;
+    readonly element: TElement;
+    readonly model?: any;
+    fileName?: string;
+    cancel?: boolean;
+}
+
+export interface FileSavingEvent {
+    readonly component: dxPivotGrid;
+    readonly element: TElement;
+    readonly data?: Blob;
+    readonly format?: string;
+    fileName?: string;
+    cancel?: boolean;
+}
+
 export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
     /**
      * @docid
@@ -419,7 +485,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onCellClick?: ((e: { component?: dxPivotGrid, element?: TElement, model?: any, area?: string, cellElement?: TElement, cell?: dxPivotGridPivotGridCell, rowIndex?: number, columnIndex?: number, columnFields?: Array<PivotGridDataSourceField>, rowFields?: Array<PivotGridDataSourceField>, dataFields?: Array<PivotGridDataSourceField>, event?: TEvent, cancel?: boolean }) => any);
+    onCellClick?: ((e: CellClickEvent) => void);
     /**
      * @docid
      * @type_function_param1 e:object
@@ -433,7 +499,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onCellPrepared?: ((e: { component?: dxPivotGrid, element?: TElement, model?: any, area?: string, cellElement?: TElement, cell?: dxPivotGridPivotGridCell, rowIndex?: number, columnIndex?: number }) => any);
+    onCellPrepared?: ((e: CellPreparedEvent) => void);
     /**
      * @docid
      * @type_function_param1 e:Object
@@ -452,7 +518,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onContextMenuPreparing?: ((e: { component?: dxPivotGrid, element?: TElement, model?: any, items?: Array<any>, area?: string, cell?: dxPivotGridPivotGridCell, cellElement?: TElement, columnIndex?: number, rowIndex?: number, dataFields?: Array<PivotGridDataSourceField>, rowFields?: Array<PivotGridDataSourceField>, columnFields?: Array<PivotGridDataSourceField>, field?: PivotGridDataSourceField }) => any);
+    onContextMenuPreparing?: ((e: ContextMenuPreparingEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -461,7 +527,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @public
      * @deprecated
      */
-    onExported?: ((e: { component?: dxPivotGrid, element?: TElement, model?: any }) => any);
+    onExported?: ((e: ExportedEvent) => void);
     /**
      * @docid
      * @type_function_param1 e:object
@@ -472,7 +538,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onExporting?: ((e: { component?: dxPivotGrid, element?: TElement, model?: any, fileName?: string, cancel?: boolean }) => any);
+    onExporting?: ((e: ExportingEvent) => void);
     /**
      * @docid
      * @type_function_param1 e:object
@@ -486,7 +552,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @public
      * @deprecated
      */
-    onFileSaving?: ((e: { component?: dxPivotGrid, element?: TElement, fileName?: string, format?: string, data?: Blob, cancel?: boolean }) => any);
+    onFileSaving?: ((e: FileSavingEvent) => void);
     /**
      * @docid
      * @type Enums.PivotGridRowHeadersLayout

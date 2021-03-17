@@ -26,6 +26,92 @@ import {
     SearchBoxMixinOptions
 } from './widget/ui.search_box_mixin';
 
+export interface ItemClickEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly itemIndex?: number | any;
+    readonly event?: TEvent;
+    readonly node?: dxTreeViewNode;
+}
+
+export interface ItemCollapsedEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly itemIndex?: number;
+    readonly event?: TEvent;
+    readonly node?: dxTreeViewNode;
+}
+
+export interface ItemContextMenuEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly itemIndex?: number | any;
+    readonly event?: TEvent;
+    readonly node?: dxTreeViewNode;
+}
+
+export interface ItemExpandedEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly itemIndex?: number;
+    readonly event?: TEvent;
+    readonly node?: dxTreeViewNode;
+}
+
+export interface ItemHoldEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly itemIndex?: number;
+    readonly event?: TEvent;
+    readonly node?: dxTreeViewNode;
+}
+
+export interface ItemRenderedEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly itemData?: any;
+    readonly itemElement?: TElement;
+    readonly itemIndex?: number;
+    readonly node?: dxTreeViewNode;
+}
+
+export interface ItemSelectionChangedEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly node?: dxTreeViewNode;
+    readonly itemElement?: TElement;
+}
+
+export interface SelectAllValueChangedEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+    readonly value?: boolean;
+}
+
+export interface SelectionChangedEvent {
+    readonly component: dxTreeView;
+    readonly element: TElement;
+    readonly model?: any;
+}
+
 export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<dxTreeView>, SearchBoxMixinOptions<dxTreeView> {
     /**
      * @docid
@@ -113,7 +199,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemClick?: ((e: { component?: dxTreeView, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any, event?: TEvent, node?: dxTreeViewNode }) => any);
+    onItemClick?: ((e: ItemClickEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -127,7 +213,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemCollapsed?: ((e: { component?: dxTreeView, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number, event?: TEvent, node?: dxTreeViewNode }) => any);
+    onItemCollapsed?: ((e: ItemCollapsedEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -141,7 +227,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemContextMenu?: ((e: { component?: dxTreeView, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any, event?: TEvent, node?: dxTreeViewNode }) => any);
+    onItemContextMenu?: ((e: ItemContextMenuEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -155,7 +241,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemExpanded?: ((e: { component?: dxTreeView, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number, event?: TEvent, node?: dxTreeViewNode }) => any);
+    onItemExpanded?: ((e: ItemExpandedEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -169,7 +255,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemHold?: ((e: { component?: dxTreeView, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number, event?: TEvent, node?: dxTreeViewNode }) => any);
+    onItemHold?: ((e: ItemHoldEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -182,7 +268,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemRendered?: ((e: { component?: dxTreeView, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number, node?: dxTreeViewNode }) => any);
+    onItemRendered?: ((e: ItemRenderedEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -193,7 +279,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemSelectionChanged?: ((e: { component?: dxTreeView, element?: TElement, model?: any, node?: dxTreeViewNode, itemElement?: TElement }) => any);
+    onItemSelectionChanged?: ((e: ItemSelectionChangedEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -203,7 +289,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onSelectAllValueChanged?: ((e: { component?: dxTreeView, element?: TElement, model?: any, value?: boolean }) => any);
+    onSelectAllValueChanged?: ((e: SelectAllValueChangedEvent) => void);
     /**
      * @docid
      * @extends Action
@@ -212,7 +298,7 @@ export interface dxTreeViewOptions extends HierarchicalCollectionWidgetOptions<d
      * @public
      * @override
      */
-    onSelectionChanged?: ((e: { component?: dxTreeView, element?: TElement, model?: any }) => any);
+    onSelectionChanged?: ((e: SelectionChangedEvent) => void);
     /**
      * @docid
      * @default 'parentId'
