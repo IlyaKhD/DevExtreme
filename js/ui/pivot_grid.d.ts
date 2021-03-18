@@ -17,8 +17,6 @@ import PivotGridDataSource, {
 
 import dxPopup from './popup';
 
-import { Texts as FieldChooserTexts } from './pivot_grid_field_chooser';
-
 import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
@@ -138,6 +136,42 @@ export interface Export {
      * @deprecated
      */
     proxyUrl?: string;
+}
+
+/**
+ * @public
+*/
+export interface FieldChooserTexts {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'All Fields'
+     */
+    allFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Column Fields'
+     */
+    columnFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Data Fields'
+     */
+    dataFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Filter Fields'
+     */
+    filterFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Row Fields'
+     */
+    rowFields?: string;
 }
 
 /**
