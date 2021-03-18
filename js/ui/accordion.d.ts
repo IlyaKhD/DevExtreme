@@ -23,6 +23,9 @@ import CollectionWidget, {
     CollectionWidgetOptions
 } from './collection/ui.collection_widget.base';
 
+/**
+ * @public
+*/
 export interface ItemTitleClickEvent {
     readonly component: dxAccordion;
     readonly element: TElement;

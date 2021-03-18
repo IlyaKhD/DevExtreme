@@ -14,6 +14,9 @@ import {
     TEvent
 } from '../../events/index';
 
+/**
+ * @public
+*/
 export interface ScrollEvent<T = dxScrollable> {
     readonly component: T;
     readonly element: TElement;
@@ -26,6 +29,9 @@ export interface ScrollEvent<T = dxScrollable> {
     readonly reachedBottom?: boolean;
 }
 
+/**
+ * @public
+*/
 export interface UpdatedEvent<T = dxScrollable> {
     readonly component: T;
     readonly element: TElement;

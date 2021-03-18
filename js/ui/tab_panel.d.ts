@@ -19,6 +19,9 @@ import dxMultiView, {
     dxMultiViewOptions
 } from './multi_view';
 
+/**
+ * @public
+*/
 export interface TitleClickEvent {
     readonly component: dxTabPanel;
     readonly element: TElement;
@@ -28,6 +31,9 @@ export interface TitleClickEvent {
     readonly event?: TEvent
 }
 
+/**
+ * @public
+*/
 export interface TitleHoldEvent {
     readonly component: dxTabPanel;
     readonly element: TElement;
@@ -37,6 +43,9 @@ export interface TitleHoldEvent {
     readonly event?: TEvent;
 }
 
+/**
+ * @public
+*/
 export interface TitleRenderedEvent {
     readonly component: dxTabPanel;
     readonly element: TElement;

@@ -40,6 +40,9 @@ import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export interface EditorEnterKeyEvent {
     readonly component: dxForm;
     readonly element: TElement;
@@ -47,6 +50,9 @@ export interface EditorEnterKeyEvent {
     readonly dataField?: string;
 }
 
+/**
+ * @public
+*/
 export interface FieldDataChangedEvent {
     readonly component: dxForm;
     readonly element: TElement;

@@ -14,6 +14,9 @@ import dxMenuBase, {
     dxMenuBaseOptions
 } from './context_menu/ui.menu_base';
 
+/**
+ * @public
+*/
 export interface SubmenuHiddenEvent {
     readonly component: dxMenu;
     readonly element: TElement;
@@ -21,6 +24,9 @@ export interface SubmenuHiddenEvent {
     readonly rootItem?: TElement;
 }
 
+/**
+ * @public
+*/
 export interface SubmenuHidingEvent {
     readonly component: dxMenu;
     readonly element: TElement;
@@ -29,6 +35,9 @@ export interface SubmenuHidingEvent {
     cancel?: boolean;
 }
 
+/**
+ * @public
+*/
 export interface SubmenuShowingEvent {
     readonly component: dxMenu;
     readonly element: TElement;
@@ -36,6 +45,9 @@ export interface SubmenuShowingEvent {
     readonly rootItem?: TElement;
 }
 
+/**
+ * @public
+*/
 export interface onSubmenuShownEvent {
     readonly component: dxMenu;
     readonly element: TElement;

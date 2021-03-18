@@ -10,12 +10,18 @@ import dxScrollable, {
     dxScrollableOptions
 } from './scroll_view/ui.scrollable';
 
+/**
+ * @public
+*/
 export interface PullDownEvent {
     readonly component: dxScrollView;
     readonly element: TElement;
     readonly model?: any;
 }
 
+/**
+ * @public
+*/
 export interface ReachBottomEvent {
     readonly component: dxScrollView;
     readonly element: TElement;

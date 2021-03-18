@@ -26,6 +26,9 @@ import {
     SearchBoxMixinOptions
 } from './widget/ui.search_box_mixin';
 
+/**
+ * @public
+*/
 export interface ItemClickEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -37,6 +40,9 @@ export interface ItemClickEvent {
     readonly node?: dxTreeViewNode;
 }
 
+/**
+ * @public
+*/
 export interface ItemCollapsedEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -48,6 +54,9 @@ export interface ItemCollapsedEvent {
     readonly node?: dxTreeViewNode;
 }
 
+/**
+ * @public
+*/
 export interface ItemContextMenuEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -59,6 +68,9 @@ export interface ItemContextMenuEvent {
     readonly node?: dxTreeViewNode;
 }
 
+/**
+ * @public
+*/
 export interface ItemExpandedEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -70,6 +82,9 @@ export interface ItemExpandedEvent {
     readonly node?: dxTreeViewNode;
 }
 
+/**
+ * @public
+*/
 export interface ItemHoldEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -81,6 +96,9 @@ export interface ItemHoldEvent {
     readonly node?: dxTreeViewNode;
 }
 
+/**
+ * @public
+*/
 export interface ItemRenderedEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -91,6 +109,9 @@ export interface ItemRenderedEvent {
     readonly node?: dxTreeViewNode;
 }
 
+/**
+ * @public
+*/
 export interface ItemSelectionChangedEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -99,6 +120,9 @@ export interface ItemSelectionChangedEvent {
     readonly itemElement?: TElement;
 }
 
+/**
+ * @public
+*/
 export interface SelectAllValueChangedEvent {
     readonly component: dxTreeView;
     readonly element: TElement;
@@ -106,6 +130,9 @@ export interface SelectAllValueChangedEvent {
     readonly value?: boolean;
 }
 
+/**
+ * @public
+*/
 export interface SelectionChangedEvent {
     readonly component: dxTreeView;
     readonly element: TElement;

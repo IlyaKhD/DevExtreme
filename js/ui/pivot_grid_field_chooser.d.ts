@@ -14,6 +14,9 @@ import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export interface ContextMenuPreparingEvent {
     readonly component: dxPivotGridFieldChooser;
     readonly element: TElement;

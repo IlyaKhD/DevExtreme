@@ -26,12 +26,18 @@ import {
     dxMenuBaseItem
 } from './menu';
 
+/**
+ * @public
+*/
 export interface HiddenEvent {
     readonly component: dxContextMenu;
     readonly element: TElement;
     readonly model?: any;
 }
 
+/**
+ * @public
+*/
 export interface HidingEvent {
     readonly component: dxContextMenu;
     readonly element: TElement;
@@ -39,6 +45,9 @@ export interface HidingEvent {
     cancel?: boolean;
 }
 
+/**
+ * @public
+*/
 export interface PositioningEvent {
     readonly component: dxContextMenu;
     readonly element: TElement;
@@ -47,6 +56,9 @@ export interface PositioningEvent {
     readonly position: positionConfig;
 }
 
+/**
+ * @public
+*/
 export interface ShowingEvent {
     readonly component: dxContextMenu;
     readonly element: TElement;
@@ -54,12 +66,18 @@ export interface ShowingEvent {
     cancel?: boolean;
 }
 
+/**
+ * @public
+*/
 export interface ShownEvent {
     readonly component: dxContextMenu;
     readonly element: TElement;
     readonly model?: any;
 }
 
+/**
+ * @public
+*/
 export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
     /**
      * @docid

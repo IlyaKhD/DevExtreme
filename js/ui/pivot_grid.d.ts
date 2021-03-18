@@ -21,6 +21,9 @@ import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export interface CellClickEvent {
     readonly component: dxPivotGrid;
     readonly element: TElement;
@@ -37,6 +40,9 @@ export interface CellClickEvent {
     cancel?: boolean
 }
 
+/**
+ * @public
+*/
 export interface CellPreparedEvent {
     readonly component: dxPivotGrid;
     readonly element: TElement;
@@ -48,6 +54,9 @@ export interface CellPreparedEvent {
     readonly columnIndex?: number
 }
 
+/**
+ * @public
+*/
 export interface ContextMenuPreparingEvent {
     readonly component: dxPivotGrid;
     readonly element: TElement;
@@ -64,12 +73,18 @@ export interface ContextMenuPreparingEvent {
     items?: Array<any>;
 }
 
+/**
+ * @public
+*/
 export interface ExportedEvent {
     readonly component: dxPivotGrid;
     readonly element: TElement;
     readonly model?: any;
 }
 
+/**
+ * @public
+*/
 export interface ExportingEvent {
     readonly component: dxPivotGrid;
     readonly element: TElement;
@@ -78,6 +93,9 @@ export interface ExportingEvent {
     cancel?: boolean;
 }
 
+/**
+ * @public
+*/
 export interface FileSavingEvent {
     readonly component: dxPivotGrid;
     readonly element: TElement;
