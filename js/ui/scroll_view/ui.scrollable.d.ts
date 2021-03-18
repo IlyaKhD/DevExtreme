@@ -91,7 +91,7 @@ export interface dxScrollableOptions<T = dxScrollable> extends DOMComponentOptio
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onUpdated?: ((e: UpdatedEvent) => void);
+    onUpdated?: ((e: UpdatedEvent<T>) => void);
     /**
      * @docid
      * @default false [for](non-touch_devices)
