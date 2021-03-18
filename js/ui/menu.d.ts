@@ -55,6 +55,43 @@ export interface onSubmenuShownEvent {
     readonly rootItem?: TElement;
 }
 
+/**
+ * @public
+*/
+export interface Delay {
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default 300
+    */
+    hide?: number;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default 50
+    */
+    show?: number;
+}
+
+/**
+ * @public
+*/
+export interface ShowFirstSubmenuMode {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default { show: 50, hide: 300 }
+     */
+    delay?: number | Delay;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type Enums.ShowSubmenuMode
+     * @default "onClick"
+     */
+    name?: 'onClick' | 'onHover';
+}
+
 export interface dxMenuOptions extends dxMenuBaseOptions<dxMenu> {
     /**
      * @docid
@@ -139,34 +176,7 @@ export interface dxMenuOptions extends dxMenuBaseOptions<dxMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    showFirstSubmenuMode?: {
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default { show: 50, hide: 300 }
-      */
-      delay?: {
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default 300
-        */
-        hide?: number,
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default 50
-        */
-        show?: number
-      } | number,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @type Enums.ShowSubmenuMode
-      * @default "onClick"
-      */
-      name?: 'onClick' | 'onHover'
-    } | 'onClick' | 'onHover';
+    showFirstSubmenuMode?: 'onClick' | 'onHover' | ShowFirstSubmenuMode;
     /**
      * @docid
      * @type Enums.SubmenuDirection

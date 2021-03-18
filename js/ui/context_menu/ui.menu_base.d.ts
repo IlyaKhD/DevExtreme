@@ -18,6 +18,61 @@ import {
     dxMenuBaseItem
 } from '../menu';
 
+/**
+* @public
+*/
+export interface Animation {
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default { type: "fade", from: 1, to: 0, duration: 100 }
+    */
+    hide?: animationConfig;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default { type: "fade", from: 0, to: 1, duration: 100 }
+    */
+    show?: animationConfig;
+}
+
+/**
+ * @public
+*/
+export interface Delay {
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default 300
+    */
+    hide?: number,
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default 50
+    */
+    show?: number
+}
+
+/**
+ * @public
+*/
+export interface ShowSubmenuMode {
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default { show: 50, hide: 300 }
+    */
+    delay?: number | Delay;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @type Enums.ShowSubmenuMode
+    * @default "onHover"
+    */
+    name?: 'onClick' | 'onHover';
+}
+
 export interface dxMenuBaseOptions<T = dxMenuBase> extends HierarchicalCollectionWidgetOptions<T> {
     /**
      * @docid
@@ -33,20 +88,7 @@ export interface dxMenuBaseOptions<T = dxMenuBase> extends HierarchicalCollectio
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    animation?: {
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default { type: "fade", from: 1, to: 0, duration: 100 }
-      */
-      hide?: animationConfig,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default { type: "fade", from: 0, to: 1, duration: 100 }
-      */
-      show?: animationConfig
-    };
+    animation?: Animation;
     /**
      * @docid
      * @default ""
@@ -89,34 +131,7 @@ export interface dxMenuBaseOptions<T = dxMenuBase> extends HierarchicalCollectio
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    showSubmenuMode?: {
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default { show: 50, hide: 300 }
-      */
-      delay?: {
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default 300
-        */
-        hide?: number,
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default 50
-        */
-        show?: number
-      } | number,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @type Enums.ShowSubmenuMode
-      * @default "onHover"
-      */
-      name?: 'onClick' | 'onHover'
-    } | 'onClick' | 'onHover';
+    showSubmenuMode?: 'onClick' | 'onHover' | ShowSubmenuMode;
 }
 /**
  * @docid

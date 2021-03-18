@@ -457,6 +457,14 @@ export interface dxFormEmptyItem {
 }
 
 /**
+ * @public
+*/
+export interface GroupItemTemplateData {
+    component: dxForm;
+    formData?: any;
+}
+
+/**
  * @docid
  * @publicName GroupItem
  * @section FormItems
@@ -539,7 +547,7 @@ export interface dxFormGroupItem {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    template?: template | ((data: { component?: dxForm, formData?: any }, itemElement: TElement) => string | TElement);
+    template?: template | ((data: GroupItemTemplateData, itemElement: TElement) => string | TElement);
     /**
      * @docid
      * @default true
@@ -554,6 +562,55 @@ export interface dxFormGroupItem {
      * @public
      */
     visibleIndex?: number;
+}
+
+/**
+ * @public
+*/
+export interface SimpleItemTemplateData {
+    readonly component: dxForm;
+    readonly dataField?: string;
+    readonly editorOptions?: any;
+    readonly editorType?: string;
+    readonly name?: string;
+}
+
+/**
+ * @public
+*/
+export interface SimpleItemLabel {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type Enums.HorizontalAlignment
+     * @default "left"
+     */
+    alignment?: 'center' | 'left' | 'right',
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type Enums.FormLabelLocation
+     * @default "left"
+     */
+    location?: 'left' | 'right' | 'top',
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default from showColonAfterLabel
+     */
+    showColon?: boolean,
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default undefined
+     */
+    text?: string,
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default true
+     */
+    visible?: boolean
 }
 
 /**
@@ -626,40 +683,7 @@ export interface dxFormSimpleItem {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    label?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type Enums.HorizontalAlignment
-       * @default "left"
-       */
-      alignment?: 'center' | 'left' | 'right',
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type Enums.FormLabelLocation
-       * @default "left"
-       */
-      location?: 'left' | 'right' | 'top',
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default from showColonAfterLabel
-       */
-      showColon?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default undefined
-       */
-      text?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default true
-       */
-      visible?: boolean
-    };
+    label?: SimpleItemLabel;
     /**
      * @docid
      * @default undefined
@@ -680,7 +704,7 @@ export interface dxFormSimpleItem {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    template?: template | ((data: { component?: dxForm, dataField?: string, editorOptions?: any, editorType?: string, name?: string }, itemElement: TElement) => string | TElement);
+    template?: template | ((data: SimpleItemTemplateData, itemElement: TElement) => string | TElement);
     /**
      * @docid
      * @default undefined

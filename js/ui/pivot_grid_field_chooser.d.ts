@@ -27,6 +27,107 @@ export interface ContextMenuPreparingEvent {
     items?: Array<any>;
 }
 
+/**
+ * @public
+*/
+export interface HeaderFilterTexts {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Cancel"
+     */
+    cancel?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "(Blanks)"
+     */
+    emptyValue?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Ok"
+     */
+    ok?: string;
+}
+
+/**
+ * @public
+*/
+export interface HeaderFilter {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default undefined
+     */
+    allowSearch?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 325
+     */
+    height?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 500
+     */
+    searchTimeout?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default false
+     */
+    showRelevantValues?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     */
+    texts?: HeaderFilterTexts;
+    /**
+     * @prevFileNamespace DevExpress.ui
+     * @docid
+     * @default 252
+     */
+    width?: number;
+}
+
+/**
+ * @public
+*/
+export interface Texts {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'All Fields'
+     */
+    allFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Column Fields'
+     */
+    columnFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Data Fields'
+     */
+    dataFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Filter Fields'
+     */
+    filterFields?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Row Fields'
+     */
+    rowFields?: string;
+}
+
 export interface dxPivotGridFieldChooserOptions extends WidgetOptions<dxPivotGridFieldChooser> {
     /**
      * @docid
@@ -56,62 +157,7 @@ export interface dxPivotGridFieldChooserOptions extends WidgetOptions<dxPivotGri
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    headerFilter?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default undefined
-       */
-      allowSearch?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 325
-       */
-      height?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 500
-       */
-      searchTimeout?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default false
-       */
-      showRelevantValues?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       */
-      texts?: {
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default "Cancel"
-         */
-        cancel?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default "(Blanks)"
-         */
-        emptyValue?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default "Ok"
-         */
-        ok?: string
-      },
-      /**
-       * @prevFileNamespace DevExpress.ui
-       * @docid
-       * @default 252
-       */
-      width?: number
-    };
+    headerFilter?: HeaderFilter;
     /**
      * @docid
      * @default 400
@@ -160,38 +206,7 @@ export interface dxPivotGridFieldChooserOptions extends WidgetOptions<dxPivotGri
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    texts?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'All Fields'
-       */
-      allFields?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Column Fields'
-       */
-      columnFields?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Data Fields'
-       */
-      dataFields?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Filter Fields'
-       */
-      filterFields?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Row Fields'
-       */
-      rowFields?: string
-    };
+    texts?: Texts;
 }
 /**
  * @docid

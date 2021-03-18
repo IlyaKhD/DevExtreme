@@ -17,6 +17,8 @@ import PivotGridDataSource, {
 
 import dxPopup from './popup';
 
+import { Texts as FieldChooserTexts } from './pivot_grid_field_chooser';
+
 import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
@@ -105,6 +107,437 @@ export interface FileSavingEvent {
     cancel?: boolean;
 }
 
+/**
+ * @public
+*/
+export interface Export {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default false
+     */
+    enabled?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "PivotGrid"
+     * @deprecated
+     */
+    fileName?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default true
+     * @deprecated
+     */
+    ignoreExcelErrors?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default undefined
+     * @deprecated
+     */
+    proxyUrl?: string;
+}
+
+/**
+ * @public
+*/
+export interface FieldChooser {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default false
+     */
+    allowSearch?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type Enums.ApplyChangesMode
+     * @default "instantly"
+     */
+    applyChangesMode?: 'instantly' | 'onDemand';
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default true
+     */
+    enabled?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 600
+     */
+    height?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type Enums.PivotGridFieldChooserLayout
+     * @default 0
+     */
+    layout?: 0 | 1 | 2;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default searchTimeout
+     */
+    searchTimeout?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     */
+    texts?: FieldChooserTexts;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Field Chooser"
+     */
+    title?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 600
+     */
+    width?: number;
+}
+
+/**
+ * @public
+*/
+export interface FieldPanelTexts {
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default "Drop Column Fields Here"
+    */
+    columnFieldArea?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Drop Data Fields Here"
+     */
+    dataFieldArea?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Drop Filter Fields Here"
+     */
+    filterFieldArea?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Drop Row Fields Here"
+     */
+    rowFieldArea?: string;
+}
+
+/**
+ * @public
+*/
+export interface FieldPanel {
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default true
+    */
+    allowFieldDragging?: boolean;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default true
+    */
+    showColumnFields?: boolean;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default true
+    */
+    showDataFields?: boolean;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default true
+    */
+    showFilterFields?: boolean;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default true
+    */
+    showRowFields?: boolean;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    */
+    texts?: FieldPanelTexts;
+    /**
+    * @docid
+    * @prevFileNamespace DevExpress.ui
+    * @default false
+    */
+    visible?: boolean;
+}
+
+/**
+ * @public
+*/
+export interface HeaderFilterTexts {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Cancel"
+     */
+    cancel?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "(Blanks)"
+     */
+    emptyValue?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Ok"
+     */
+    ok?: string;
+}
+
+/**
+ * @public
+*/
+export interface HeaderFilter {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default false
+     */
+    allowSearch?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 325
+     */
+    height?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default searchTimeout
+     */
+    searchTimeout?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default false
+     */
+    showRelevantValues?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     */
+    texts?: HeaderFilterTexts;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 252
+     */
+    width?: number;
+}
+
+/**
+ * @public
+*/
+export interface LoadPanel {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default true
+     */
+    enabled?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 70
+     */
+    height?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default ""
+     */
+    indicatorSrc?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default false
+     */
+    shading?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default ''
+     */
+    shadingColor?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default true
+     */
+    showIndicator?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default true
+     */
+    showPane?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Loading...'
+     */
+    text?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 200
+     */
+    width?: number;
+}
+
+/**
+ * @public
+*/
+export interface Scrolling {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type Enums.PivotGridScrollingMode
+     * @default "standard"
+     */
+    mode?: 'standard' | 'virtual';
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type boolean|Enums.Mode
+     * @default "auto"
+     */
+    useNative?: boolean | 'auto';
+}
+
+/**
+ * @public
+*/
+export interface StateStoring {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type_function_return Promise<Object>
+     */
+    customLoad?: (() => TPromise<any>);
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type_function_param1 state:object
+     */
+    customSave?: ((state: any) => any);
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default false
+     */
+    enabled?: boolean;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 2000
+     */
+    savingTimeout?: number;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default null
+     */
+    storageKey?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @type Enums.StateStoringType
+     * @default "localStorage"
+     */
+    type?: 'custom' | 'localStorage' | 'sessionStorage';
+}
+
+/**
+ * @public
+*/
+export interface Texts {
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Collapse All'
+     */
+    collapseAll?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "N/A"
+     */
+    dataNotAvailable?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Expand All'
+     */
+    expandAll?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default "Export to Excel file"
+     */
+    exportToExcel?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Grand Total'
+     */
+    grandTotal?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'No data'
+     */
+    noData?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Remove All Sorting'
+     */
+    removeAllSorting?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Show Field Chooser'
+     */
+    showFieldChooser?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Sort {0} by This Column'
+     */
+    sortColumnBySummary?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default 'Sort {0} by This Row'
+     */
+    sortRowBySummary?: string;
+    /**
+     * @docid
+     * @prevFileNamespace DevExpress.ui
+     * @default '{0} Total'
+     */
+    total?: string;
+}
+
 export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
     /**
      * @docid
@@ -161,262 +594,25 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    export?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default false
-       */
-      enabled?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default "PivotGrid"
-       * @deprecated
-       */
-      fileName?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default true
-       * @deprecated
-       */
-      ignoreExcelErrors?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default undefined
-       * @deprecated
-       */
-      proxyUrl?: string
-    };
+    export?: Export;
     /**
      * @docid
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    fieldChooser?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default false
-       */
-      allowSearch?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type Enums.ApplyChangesMode
-       * @default "instantly"
-       */
-      applyChangesMode?: 'instantly' | 'onDemand',
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default true
-       */
-      enabled?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 600
-       */
-      height?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type Enums.PivotGridFieldChooserLayout
-       * @default 0
-       */
-      layout?: 0 | 1 | 2,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default searchTimeout
-       */
-      searchTimeout?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       */
-      texts?: {
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default 'All Fields'
-         */
-        allFields?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default 'Column Fields'
-         */
-        columnFields?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default 'Data Fields'
-         */
-        dataFields?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default 'Filter Fields'
-         */
-        filterFields?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default 'Row Fields'
-         */
-        rowFields?: string
-      },
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default "Field Chooser"
-       */
-      title?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 600
-       */
-      width?: number
-    };
+    fieldChooser?: FieldChooser;
     /**
      * @docid
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    fieldPanel?: {
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default true
-      */
-      allowFieldDragging?: boolean,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default true
-      */
-      showColumnFields?: boolean,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default true
-      */
-      showDataFields?: boolean,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default true
-      */
-      showFilterFields?: boolean,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default true
-      */
-      showRowFields?: boolean,
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      */
-      texts?: {
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default "Drop Column Fields Here"
-        */
-        columnFieldArea?: string,
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default "Drop Data Fields Here"
-        */
-        dataFieldArea?: string,
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default "Drop Filter Fields Here"
-        */
-        filterFieldArea?: string,
-        /**
-        * @docid
-        * @prevFileNamespace DevExpress.ui
-        * @default "Drop Row Fields Here"
-        */
-        rowFieldArea?: string
-      },
-      /**
-      * @docid
-      * @prevFileNamespace DevExpress.ui
-      * @default false
-      */
-      visible?: boolean
-    };
+    fieldPanel?: FieldPanel;
     /**
      * @docid
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    headerFilter?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default false
-       */
-      allowSearch?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 325
-       */
-      height?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default searchTimeout
-       */
-      searchTimeout?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default false
-       */
-      showRelevantValues?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       */
-      texts?: {
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default "Cancel"
-         */
-        cancel?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default "(Blanks)"
-         */
-        emptyValue?: string,
-        /**
-         * @docid
-         * @prevFileNamespace DevExpress.ui
-         * @default "Ok"
-         */
-        ok?: string
-      },
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 252
-       */
-      width?: number
-    };
+    headerFilter?: HeaderFilter;
     /**
      * @docid
      * @default true
@@ -429,62 +625,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    loadPanel?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default true
-       */
-      enabled?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 70
-       */
-      height?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default ""
-       */
-      indicatorSrc?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default false
-       */
-      shading?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default ''
-       */
-      shadingColor?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default true
-       */
-      showIndicator?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default true
-       */
-      showPane?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Loading...'
-       */
-      text?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 200
-       */
-      width?: number
-    };
+    loadPanel?: LoadPanel;
     /**
      * @docid
      * @type_function_param1 e:Object
@@ -584,22 +725,7 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    scrolling?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type Enums.PivotGridScrollingMode
-       * @default "standard"
-       */
-      mode?: 'standard' | 'virtual',
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type boolean|Enums.Mode
-       * @default "auto"
-       */
-      useNative?: boolean | 'auto'
-    };
+    scrolling?: Scrolling;
     /**
      * @docid
      * @default false
@@ -648,118 +774,13 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    stateStoring?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type_function_return Promise<Object>
-       */
-      customLoad?: (() => TPromise<any>),
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type_function_param1 state:object
-       */
-      customSave?: ((state: any) => any),
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default false
-       */
-      enabled?: boolean,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 2000
-       */
-      savingTimeout?: number,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default null
-       */
-      storageKey?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @type Enums.StateStoringType
-       * @default "localStorage"
-       */
-      type?: 'custom' | 'localStorage' | 'sessionStorage'
-    };
+    stateStoring?:StateStoring;
     /**
      * @docid
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    texts?: {
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Collapse All'
-       */
-      collapseAll?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default "N/A"
-       */
-      dataNotAvailable?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Expand All'
-       */
-      expandAll?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default "Export to Excel file"
-       */
-      exportToExcel?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Grand Total'
-       */
-      grandTotal?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'No data'
-       */
-      noData?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Remove All Sorting'
-       */
-      removeAllSorting?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Show Field Chooser'
-       */
-      showFieldChooser?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Sort {0} by This Column'
-       */
-      sortColumnBySummary?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default 'Sort {0} by This Row'
-       */
-      sortRowBySummary?: string,
-      /**
-       * @docid
-       * @prevFileNamespace DevExpress.ui
-       * @default '{0} Total'
-       */
-      total?: string
-    };
+    texts?: Texts;
     /**
      * @docid
      * @default true
@@ -768,6 +789,20 @@ export interface dxPivotGridOptions extends WidgetOptions<dxPivotGrid> {
      */
     wordWrapEnabled?: boolean;
 }
+
+/**
+ * @public
+*/
+export interface BindChartOptions {
+  inverted?: boolean;
+  dataFieldsDisplayMode?: string;
+  putDataFieldsInto?: string;
+  alternateDataFields?: boolean;
+  processCell?: Function;
+  customizeChart?: Function;
+  customizeSeries?: Function;
+}
+
 /**
  * @docid
  * @inherits Widget
@@ -794,7 +829,7 @@ export default class dxPivotGrid extends Widget {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    bindChart(chart: string | TElement | any, integrationOptions: { inverted?: boolean, dataFieldsDisplayMode?: string, putDataFieldsInto?: string, alternateDataFields?: boolean, processCell?: Function, customizeChart?: Function, customizeSeries?: Function }): Function & null;
+    bindChart(chart: string | TElement | any, integrationOptions: BindChartOptions): Function & null;
     /**
      * @docid
      * @publicName exportToExcel()

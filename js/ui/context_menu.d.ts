@@ -78,6 +78,24 @@ export interface ShownEvent {
 /**
  * @public
 */
+export interface DisplayMode {
+    /**
+    * @docid
+    * @default undefined
+    * @prevFileNamespace DevExpress.ui
+    */
+    delay?: number;
+    /**
+    * @docid
+    * @default undefined
+    * @prevFileNamespace DevExpress.ui
+    */
+    name?: string;
+}
+
+/**
+ * @public
+*/
 export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
     /**
      * @docid
@@ -162,20 +180,7 @@ export interface dxContextMenuOptions extends dxMenuBaseOptions<dxContextMenu> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    showEvent?: {
-      /**
-      * @docid
-      * @default undefined
-      * @prevFileNamespace DevExpress.ui
-      */
-      delay?: number,
-      /**
-      * @docid
-      * @default undefined
-      * @prevFileNamespace DevExpress.ui
-      */
-      name?: string
-    } | string;
+    showEvent?: string | DisplayMode;
     /**
      * @docid
      * @type Enums.ContextMenuSubmenuDirection
