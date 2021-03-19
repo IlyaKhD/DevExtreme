@@ -3,9 +3,45 @@ import {
 } from '../core/element';
 
 import dxDropDownList, {
-    dxDropDownListOptions
+    dxDropDownListOptions,
+    CutEvent,
+    CopyEvent,
+    InputEvent,
+    KeyUpEvent,
+    PasteEvent,
+    ChangeEvent,
+    ClosedEvent,
+    OpenedEvent,
+    FocusInEvent,
+    KeyDownEvent,
+    EnterKeyEvent,
+    FocusOutEvent,
+    KeyPressEvent,
+    ItemClickEvent,
+    ContentReadyEvent,
+    ValueChangedEvent,
+    SelectionChangedEvent
 } from './drop_down_editor/ui.drop_down_list';
 
+export {
+    CutEvent,
+    CopyEvent,
+    InputEvent,
+    KeyUpEvent,
+    PasteEvent,
+    ChangeEvent,
+    ClosedEvent,
+    OpenedEvent,
+    FocusInEvent,
+    KeyDownEvent,
+    EnterKeyEvent,
+    FocusOutEvent,
+    KeyPressEvent,
+    ItemClickEvent,
+    ContentReadyEvent,
+    ValueChangedEvent,
+    SelectionChangedEvent
+}
 export interface dxAutocompleteOptions extends dxDropDownListOptions<dxAutocomplete> {
     /**
      * @docid

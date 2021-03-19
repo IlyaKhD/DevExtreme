@@ -3,9 +3,15 @@ import {
 } from '../core/element';
 
 import Editor, {
-    EditorOptions
+    EditorOptions,
+    ContentReadyEvent,
+    ValueChangedEvent
 } from './editor/editor';
 
+export {
+    ContentReadyEvent,
+    ValueChangedEvent
+}
 export interface dxCheckBoxOptions extends EditorOptions<dxCheckBox> {
     /**
      * @docid

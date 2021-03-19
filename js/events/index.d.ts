@@ -1,6 +1,18 @@
+import {
+    TElement
+} from '../core/element';
+
 export interface EventExtension { }
 export interface EventType { }
 export type TEvent = {} extends EventType ? dxEvent : EventType;
+export interface BaseEvent<T> {
+    component: T,
+    element: TElement,
+    model?: any
+}
+export interface BaseNativeEvent<T> extends BaseEvent<T> {
+    event?: TEvent
+}
 
 /**
  * @docid

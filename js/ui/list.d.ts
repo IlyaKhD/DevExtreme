@@ -15,12 +15,18 @@ import DataSource, {
 } from '../data/data_source';
 
 import {
+    BaseEvent,
+    BaseNativeEvent,
     TEvent
 } from '../events/index';
 
 import CollectionWidget, {
     CollectionWidgetItem,
-    CollectionWidgetOptions
+    CollectionWidgetOptions,
+    ItemRenderedEvent,
+    SelectionChangedEvent,
+    ContentReadyEvent,
+    BaseItemEvent
 } from './collection/ui.collection_widget.base';
 
 import {
@@ -31,6 +37,54 @@ import {
     SearchBoxMixinOptions
 } from './widget/ui.search_box_mixin';
 
+export {
+    ItemRenderedEvent,
+    SelectionChangedEvent,
+    ContentReadyEvent
+}
+export interface GroupRenderedEvent<T> extends BaseEvent<T> {
+    groupData?: any,
+    groupElement?:TElement,
+    groupIndex?: number
+}
+export interface ItemClickEvent<T> extends BaseItemEvent<T> {
+    itemIndex: number | any
+}
+export interface ItemContextMenuEvent<T> extends BaseItemEvent<T> {
+    itemIndex: number | any
+}
+export interface ItemDeletedEvent<T> extends BaseItemEvent<T> {
+    itemIndex: number | any
+}
+export interface ItemDeletingEvent<T> extends BaseItemEvent<T> {
+    itemIndex: number | any,
+    cancel?: boolean | TPromise<void>
+}
+export interface ItemHoldEvent<T> extends BaseItemEvent<T> {
+    itemIndex: number | any,
+    event?: TEvent
+}
+export interface ItemReorderedEvent<T> extends BaseItemEvent<T> {
+    itemIndex: number | any,
+    fromIndex: number,
+    toIndex: number
+}
+export interface ItemSwipeEvent<T> extends BaseItemEvent<T> {
+    itemIndex: number | any,
+    direction: string
+}
+export interface PageLoadingEvent<T> extends BaseEvent<T> {}
+export interface PullRefreshEvent<T> extends BaseEvent<T> {}
+export interface ScrollEvent<T> extends BaseNativeEvent<T> {
+    scrollOffset?: any,
+    reachedLeft: boolean,
+    reachedRight: boolean,
+    reachedTop: boolean,
+    reachedBottom: boolean
+}
+export interface SelectAllValueChangedEvent<T> extends BaseEvent<T> {
+    value: boolean
+}
 export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBoxMixinOptions<dxList> {
     /**
      * @docid
@@ -186,7 +240,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onGroupRendered?: ((e: { component?: dxList, element?: TElement, model?: any, groupData?: any, groupElement?: TElement, groupIndex?: number }) => any);
+    onGroupRendered?: ((e: GroupRenderedEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -199,7 +253,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemClick?: ((e: { component?: dxList, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any, event?: TEvent }) => any) | string;
+    onItemClick?: ((e: ItemClickEvent<dxList>) => any) | string;
     /**
      * @docid
      * @extends Action
@@ -212,7 +266,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemContextMenu?: ((e: { component?: dxList, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any, event?: TEvent }) => any);
+    onItemContextMenu?: ((e: ItemContextMenuEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -225,7 +279,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemDeleted?: ((e: { component?: dxList, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any }) => any);
+    onItemDeleted?: ((e: ItemDeletedEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -239,7 +293,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemDeleting?: ((e: { component?: dxList, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any, cancel?: boolean | TPromise<void> }) => any);
+    onItemDeleting?: ((e: ItemDeletingEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -252,7 +306,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemHold?: ((e: { component?: dxList, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any, event?: TEvent }) => any);
+    onItemHold?: ((e: ItemHoldEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -267,7 +321,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemReordered?: ((e: { component?: dxList, element?: TElement, model?: any, itemData?: any, itemElement?: TElement, itemIndex?: number | any, fromIndex?: number, toIndex?: number }) => any);
+    onItemReordered?: ((e: ItemReorderedEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -281,7 +335,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemSwipe?: ((e: { component?: dxList, element?: TElement, model?: any, event?: TEvent, itemData?: any, itemElement?: TElement, itemIndex?: number | any, direction?: string }) => any);
+    onItemSwipe?: ((e: ItemSwipeEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -289,7 +343,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onPageLoading?: ((e: { component?: dxList, element?: TElement, model?: any }) => any);
+    onPageLoading?: ((e: PageLoadingEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -297,7 +351,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onPullRefresh?: ((e: { component?: dxList, element?: TElement, model?: any }) => any);
+    onPullRefresh?: ((e: PullRefreshEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -312,7 +366,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onScroll?: ((e: { component?: dxList, element?: TElement, model?: any, event?: TEvent, scrollOffset?: any, reachedLeft?: boolean, reachedRight?: boolean, reachedTop?: boolean, reachedBottom?: boolean }) => any);
+    onScroll?: ((e: ScrollEvent<dxList>) => any);
     /**
      * @docid
      * @extends Action
@@ -322,7 +376,7 @@ export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBo
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onSelectAllValueChanged?: ((e: { component?: dxList, element?: TElement, model?: any, value?: boolean }) => any);
+    onSelectAllValueChanged?: ((e: SelectAllValueChangedEvent<dxList>) => any);
     /**
      * @docid
      * @type Enums.ListPageLoadMode

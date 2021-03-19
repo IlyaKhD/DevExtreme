@@ -11,17 +11,49 @@ import DataSource, {
 } from '../data/data_source';
 
 import dxDropDownEditor, {
-    dxDropDownEditorOptions
+    dxDropDownEditorOptions,
+    CutEvent,
+    CopyEvent,
+    PasteEvent,
+    KeyUpEvent,
+    InputEvent,
+    ChangeEvent,
+    ClosedEvent,
+    OpenedEvent,
+    EnterKeyEvent,
+    KeyDownEvent,
+    FocusInEvent,
+    KeyPressEvent,
+    FocusOutEvent,
+    ContentReadyEvent,
+    ValueChangedEvent
 } from './drop_down_editor/ui.drop_down_editor';
 
 import {
     DataExpressionMixinOptions
 } from './editor/ui.data_expression';
 
-import {
-    dxPopupOptions
-} from './popup';
-
+export {
+    CutEvent,
+    CopyEvent,
+    PasteEvent,
+    KeyUpEvent,
+    InputEvent,
+    ChangeEvent,
+    ClosedEvent,
+    OpenedEvent,
+    EnterKeyEvent,
+    KeyDownEvent,
+    FocusInEvent,
+    KeyPressEvent,
+    FocusOutEvent,
+    ContentReadyEvent,
+    ValueChangedEvent
+}
+export interface ContentData {
+    component: dxDropDownBox,
+    value?: any
+}
 export interface dxDropDownBoxOptions extends DataExpressionMixinOptions<dxDropDownBox>, dxDropDownEditorOptions<dxDropDownBox> {
     /**
      * @docid
@@ -41,7 +73,7 @@ export interface dxDropDownBoxOptions extends DataExpressionMixinOptions<dxDropD
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    contentTemplate?: template | ((templateData: { component?: dxDropDownBox, value?: any }, contentElement: TElement) => string | TElement);
+    contentTemplate?: template | ((templateData: ContentData, contentElement: TElement) => string | TElement);
     /**
      * @docid
      * @default null

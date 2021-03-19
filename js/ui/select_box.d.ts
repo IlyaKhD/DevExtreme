@@ -11,9 +11,51 @@ import {
 } from '../core/templates/template';
 
 import dxDropDownList, {
-    dxDropDownListOptions
+    dxDropDownListOptions,
+    ItemClickEvent,
+    ValueChangedEvent,
+    SelectionChangedEvent,
+    CutEvent,
+    CopyEvent,
+    InputEvent,
+    KeyUpEvent,
+    PasteEvent,
+    OpenedEvent,
+    ClosedEvent,
+    ChangeEvent,
+    FocusInEvent,
+    KeyDownEvent,
+    EnterKeyEvent,
+    FocusOutEvent,
+    KeyPressEvent,
+    ContentReadyEvent
 } from './drop_down_editor/ui.drop_down_list';
+import { BaseEvent } from '../events/index';
 
+export {
+    ItemClickEvent,
+    ValueChangedEvent,
+    SelectionChangedEvent,
+    CutEvent,
+    CopyEvent,
+    InputEvent,
+    KeyUpEvent,
+    PasteEvent,
+    OpenedEvent,
+    ClosedEvent,
+    ChangeEvent,
+    FocusInEvent,
+    KeyDownEvent,
+    EnterKeyEvent,
+    FocusOutEvent,
+    KeyPressEvent,
+    ContentReadyEvent
+}
+
+export interface CustomItemCreatingEvent<T> extends BaseEvent<T> {
+    text?: string,
+    customItem?: string | any | TPromise<any> 
+}
 export interface dxSelectBoxOptions<T = dxSelectBox> extends dxDropDownListOptions<T> {
     /**
      * @docid
@@ -43,7 +85,7 @@ export interface dxSelectBoxOptions<T = dxSelectBox> extends dxDropDownListOptio
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onCustomItemCreating?: ((e: { component?: T, element?: TElement, model?: any, text?: string, customItem?: string | any | TPromise<any> }) => any);
+    onCustomItemCreating?: ((e: CustomItemCreatingEvent<T>) => any);
     /**
      * @docid
      * @default true

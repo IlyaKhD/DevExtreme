@@ -12,9 +12,21 @@ import {
 
 import dxOverlay, {
     dxOverlayAnimation,
-    dxOverlayOptions
+    dxOverlayOptions,
+    ShownEvent,
+    HidindEvent,
+    HiddenEvent,
+    ShowingEvent,
+    ContentReadyEvent
 } from './overlay';
 
+export {
+    ShownEvent,
+    HidindEvent,
+    HiddenEvent,
+    ShowingEvent,
+    ContentReadyEvent
+}
 export interface dxLoadPanelOptions extends dxOverlayOptions<dxLoadPanel> {
     /**
      * @docid

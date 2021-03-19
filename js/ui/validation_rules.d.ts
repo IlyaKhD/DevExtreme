@@ -2,6 +2,15 @@ import {
     TPromise
 } from '../core/utils/deferred';
 
+export interface ValidationCallbackData {
+    value?: string | number,
+    rule?: any,
+    validator?: any,
+    data?: any,
+    column?: any,
+    formItem?: any
+}
+
 /**
  * @docid
  * @section dxValidator
@@ -49,7 +58,7 @@ export interface AsyncRule {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    validationCallback?: ((options: { value?: string | number, rule?: any, validator?: any, data?: any, column?: any, formItem?: any }) => TPromise<any>);
+    validationCallback?: ((options: ValidationCallbackData) => TPromise<any>);
 }
 
 /**
@@ -150,7 +159,7 @@ export interface CustomRule {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    validationCallback?: ((options: { value?: string | number, rule?: any, validator?: any, data?: any, column?: any, formItem?: any }) => boolean);
+    validationCallback?: ((options: ValidationCallbackData) => boolean);
 }
 
 /**

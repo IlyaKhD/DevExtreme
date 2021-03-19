@@ -7,9 +7,25 @@ import {
 } from '../core/templates/template';
 
 import Editor, {
-    EditorOptions
+    EditorOptions,
+    ContentReadyEvent,
+    ValueChangedEvent
 } from './editor/editor';
 
+export {
+    ContentReadyEvent,
+    ValueChangedEvent
+}
+export interface CellData {
+    date: Date,
+    view: string,
+    text?: string
+}
+export interface DisabledDateData {
+    component: any,
+    date: Date,
+    view: string
+}
 export interface dxCalendarOptions extends EditorOptions<dxCalendar> {
     /**
      * @docid
@@ -31,7 +47,7 @@ export interface dxCalendarOptions extends EditorOptions<dxCalendar> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    cellTemplate?: template | ((itemData: { date?: Date, view?: string, text?: string }, itemIndex: number, itemElement: TElement) => string | TElement);
+    cellTemplate?: template | ((itemData: CellData, itemIndex: number, itemElement: TElement) => string | TElement);
     /**
      * @docid
      * @default undefined
@@ -50,7 +66,7 @@ export interface dxCalendarOptions extends EditorOptions<dxCalendar> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    disabledDates?: Array<Date> | ((data: { component?: any, date?: Date, view?: string }) => boolean);
+    disabledDates?: Array<Date> | ((data: DisabledDateData) => boolean);
     /**
      * @docid
      * @type Enums.FirstDayOfWeek

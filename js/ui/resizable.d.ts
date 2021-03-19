@@ -7,8 +7,23 @@ import {
 } from '../core/element';
 
 import {
-    TEvent
+    BaseNativeEvent
 } from '../events/index';
+
+interface BaseResizeEvent<T> extends BaseNativeEvent<T> {
+    width: number,
+    height: number,
+    handles: {
+        left: boolean,
+        top: boolean,
+        right: boolean,
+        bottom: boolean
+    }
+}
+
+export interface ResizeEvent<T> extends BaseResizeEvent<T> {}
+export interface ResizeStartEvent<T> extends BaseResizeEvent<T> {}
+export interface ResizeEndEvent<T> extends BaseResizeEvent<T> {}
 
 export interface dxResizableOptions extends DOMComponentOptions<dxResizable> {
     /**
@@ -66,7 +81,7 @@ export interface dxResizableOptions extends DOMComponentOptions<dxResizable> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onResize?: ((e: { component?: dxResizable, element?: TElement, model?: any, event?: TEvent, width?: number, height?: number }) => any);
+    onResize?: ((e: ResizeEvent<dxResizable>) => any);
     /**
      * @docid
      * @extends Action
@@ -78,7 +93,7 @@ export interface dxResizableOptions extends DOMComponentOptions<dxResizable> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onResizeEnd?: ((e: { component?: dxResizable, element?: TElement, model?: any, event?: TEvent, width?: number, height?: number }) => any);
+    onResizeEnd?: ((e: ResizeEndEvent<dxResizable>) => any);
     /**
      * @docid
      * @extends Action
@@ -90,7 +105,7 @@ export interface dxResizableOptions extends DOMComponentOptions<dxResizable> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onResizeStart?: ((e: { component?: dxResizable, element?: TElement, model?: any, event?: TEvent, width?: number, height?: number }) => any);
+    onResizeStart?: ((e: ResizeStartEvent<dxResizable>) => any);
     /**
      * @docid
      * @type_function_return number|string

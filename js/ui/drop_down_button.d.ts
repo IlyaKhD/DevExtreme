@@ -15,6 +15,7 @@ import DataSource, {
 } from '../data/data_source';
 
 import {
+    BaseNativeEvent,
     TEvent
 } from '../events/index';
 
@@ -27,9 +28,22 @@ import {
 } from './popup';
 
 import Widget, {
-    WidgetOptions
+    WidgetOptions,
+    ContentReadyEvent
 } from './widget/ui.widget';
 
+export { ContentReadyEvent }
+export interface ButtonClickEvent<T> extends BaseNativeEvent<T> {
+    selectedItem?: any
+}
+export interface ItemClickEvent<T> extends BaseNativeEvent<T> {
+    itemData?: any,
+    itemElement?: TElement
+}
+export interface SelectionChangedEvent<T> extends BaseNativeEvent<T> {
+    item?: any,
+    previousItem?: any
+}
 export interface dxDropDownButtonOptions extends WidgetOptions<dxDropDownButton> {
     /**
      * @docid
@@ -134,7 +148,7 @@ export interface dxDropDownButtonOptions extends WidgetOptions<dxDropDownButton>
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onButtonClick?: ((e: { component?: dxDropDownButton, element?: TElement, model?: any, event?: TEvent, selectedItem?: any }) => any) | string;
+    onButtonClick?: ((e: ButtonClickEvent<dxDropDownButton>) => any) | string;
     /**
      * @docid
      * @extends Action
@@ -146,7 +160,7 @@ export interface dxDropDownButtonOptions extends WidgetOptions<dxDropDownButton>
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onItemClick?: ((e: { component?: dxDropDownButton, element?: TElement, model?: any, event?: TEvent, itemData?: any, itemElement?: TElement }) => any) | string;
+    onItemClick?: ((e: ItemClickEvent<dxDropDownButton>) => any) | string;
     /**
      * @docid
      * @extends Action
@@ -157,7 +171,7 @@ export interface dxDropDownButtonOptions extends WidgetOptions<dxDropDownButton>
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onSelectionChanged?: ((e: { component?: dxDropDownButton, element?: TElement, model?: any, item?: any, previousItem?: any }) => any) | string;
+    onSelectionChanged?: ((e: SelectionChangedEvent<dxDropDownButton>) => any) | string;
     /**
      * @docid
      * @default false

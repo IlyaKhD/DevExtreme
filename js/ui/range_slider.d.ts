@@ -3,10 +3,22 @@ import {
 } from '../core/element';
 
 import {
-    dxSliderBaseOptions
+    dxSliderBaseOptions,
+    ContentReadyEvent,
+    ValueChangedEvent as SliderValueChangedEvent
 } from './slider';
 
 import dxTrackBar from './track_bar';
+
+export {
+    ContentReadyEvent,
+    ValueChangedEvent
+}
+export interface ValueChangedEvent<T> extends SliderValueChangedEvent<T> {
+    start?: number,
+    end?: number,
+    value?: Array<number>
+}
 export interface dxRangeSliderOptions extends dxSliderBaseOptions<dxRangeSlider> {
     /**
      * @docid
@@ -32,7 +44,7 @@ export interface dxRangeSliderOptions extends dxSliderBaseOptions<dxRangeSlider>
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onValueChanged?: ((e: { component?: dxRangeSlider, element?: TElement, model?: any, start?: number, end?: number, value?: Array<number> }) => any);
+    onValueChanged?: ((e: ValueChangedEvent<dxRangeSlider>) => any);
     /**
      * @docid
      * @default 40

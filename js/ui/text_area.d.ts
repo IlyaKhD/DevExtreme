@@ -3,9 +3,37 @@ import {
 } from '../core/element';
 
 import dxTextBox, {
-    dxTextBoxOptions
+    dxTextBoxOptions,
+    CutEvent,
+    CopyEvent,
+    InputEvent,
+    KeyUpEvent,
+    PasteEvent,
+    ChangeEvent,
+    FocusInEvent,
+    KeyDownEvent,
+    EnterKeyEvent,
+    FocusOutEvent,
+    KeyPressEvent,
+    ContentReadyEvent,
+    ValueChangedEvent
 } from './text_box';
 
+export {
+    CutEvent,
+    CopyEvent,
+    InputEvent,
+    KeyUpEvent,
+    PasteEvent,
+    ChangeEvent,
+    FocusInEvent,
+    KeyDownEvent,
+    EnterKeyEvent,
+    FocusOutEvent,
+    KeyPressEvent,
+    ContentReadyEvent,
+    ValueChangedEvent
+}
 export interface dxTextAreaOptions extends dxTextBoxOptions<dxTextArea> {
     /**
      * @docid

@@ -3,8 +3,37 @@ import {
 } from '../core/element';
 
 import dxTextEditor, {
-    dxTextEditorOptions
+    dxTextEditorOptions,
+    ChangeEvent,
+    ContentReadyEvent,
+    CopyEvent,
+    CutEvent,
+    EnterKeyEvent,
+    FocusInEvent,
+    FocusOutEvent,
+    InputEvent,
+    KeyDownEvent,
+    KeyPressEvent,
+    KeyUpEvent,
+    PasteEvent,
+    ValueChangedEvent
 } from './text_box/ui.text_editor.base';
+
+export {
+    ChangeEvent,
+    ContentReadyEvent,
+    CopyEvent,
+    CutEvent,
+    EnterKeyEvent,
+    FocusInEvent,
+    FocusOutEvent,
+    InputEvent,
+    KeyDownEvent,
+    KeyPressEvent,
+    KeyUpEvent,
+    PasteEvent,
+    ValueChangedEvent
+}
 
 export interface dxTextBoxOptions<T = dxTextBox> extends dxTextEditorOptions<T> {
     /**

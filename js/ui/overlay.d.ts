@@ -15,12 +15,32 @@ import {
 } from '../core/utils/deferred';
 
 import {
+    BaseEvent,
     TEvent
 } from '../events/index';
 
 import Widget, {
-    WidgetOptions
+    WidgetOptions,
+    ContentReadyEvent
 } from './widget/ui.widget';
+import {
+    ResizeEvent,
+    ResizeEndEvent,
+    ResizeStartEvent
+} from './resizable';
+
+export interface HiddenEvent<T> extends BaseEvent<T> {}
+export interface HidindEvent<T> extends BaseEvent<T> {
+    cancel?: boolean
+}
+export interface ShowingEvent<T> extends BaseEvent<T> {}
+export interface ShownEvent<T> extends BaseEvent<T> {}
+export {
+    ContentReadyEvent,
+    ResizeEndEvent,
+    ResizeStartEvent,
+    ResizeEvent
+}
 
 export interface dxOverlayOptions<T = dxOverlay> extends WidgetOptions<T> {
     /**
@@ -112,7 +132,7 @@ export interface dxOverlayOptions<T = dxOverlay> extends WidgetOptions<T> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onHidden?: ((e: { component?: T, element?: TElement, model?: any }) => any);
+    onHidden?: ((e: HiddenEvent<T>) => any);
     /**
      * @docid
      * @extends Action
@@ -122,7 +142,7 @@ export interface dxOverlayOptions<T = dxOverlay> extends WidgetOptions<T> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onHiding?: ((e: { component?: T, element?: TElement, model?: any, cancel?: boolean }) => any);
+    onHiding?: ((e: HidindEvent<T>) => any);
     /**
      * @docid
      * @extends Action
@@ -130,7 +150,7 @@ export interface dxOverlayOptions<T = dxOverlay> extends WidgetOptions<T> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onShowing?: ((e: { component?: T, element?: TElement, model?: any }) => any);
+    onShowing?: ((e: ShowingEvent<T>) => any);
     /**
      * @docid
      * @extends Action
@@ -138,7 +158,7 @@ export interface dxOverlayOptions<T = dxOverlay> extends WidgetOptions<T> {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    onShown?: ((e: { component?: T, element?: TElement, model?: any }) => any);
+    onShown?: ((e: ShownEvent<T>) => any);
     /**
      * @docid
      * @default { my: 'center', at: 'center', of: window }
