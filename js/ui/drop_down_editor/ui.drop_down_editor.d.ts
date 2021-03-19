@@ -38,8 +38,8 @@ import {
 export interface ClosedEvent <T> extends BaseEvent<T> {}
 export interface OpenedEvent <T> extends BaseEvent<T> {}
 export interface DropDownButtonData {
-    text?: string,
-    icon?: string
+    readonly text?: string,
+    readonly icon?: string
 }
 export {
     ChangeEvent,

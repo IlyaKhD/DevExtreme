@@ -2,10 +2,13 @@ import {
     TPromise
 } from '../core/utils/deferred';
 
+/**
+ * @public
+*/
 export interface ValidationCallbackData {
     value?: string | number,
-    rule?: any,
-    validator?: any,
+    rule: any,
+    validator: any,
     data?: any,
     column?: any,
     formItem?: any

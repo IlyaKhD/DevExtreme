@@ -12,8 +12,8 @@ import Widget, {
 } from '../widget/ui.widget';
 
 export interface ValueChangedEvent<T> extends BaseNativeEvent<T> {
-    previousValue?: any,
-    value?: any,
+    readonly previousValue?: any,
+    readonly value?: any,
 }
 
 export { ContentReadyEvent }

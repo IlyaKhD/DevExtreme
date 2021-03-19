@@ -25,16 +25,28 @@ import {
     dxToolbarItem
 } from './toolbar';
 
+/**
+ * @public
+*/
 export {
     ContentReadyEvent,
     ValueChangedEvent
 }
+/**
+ * @public
+*/
 export interface FocusInEvent<T> extends BaseNativeEvent<T> {}
+/**
+ * @public
+*/
 export interface FocusOutEvent<T> extends BaseNativeEvent<T> {}
+/**
+ * @public
+*/
 export interface MentionData {
-    marker: string,
-    id?: string | number,
-    value?: any
+    readonly marker: string,
+    readonly id?: string | number,
+    readonly value?: any
 }
 export interface dxHtmlEditorOptions extends EditorOptions<dxHtmlEditor> {
     /**

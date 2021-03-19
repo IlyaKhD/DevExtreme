@@ -23,6 +23,9 @@ import dxOverlay, {
     ShowingEvent
 } from './overlay';
 
+/**
+ * @public
+*/
 export {
     ShownEvent,
     HiddenEvent,

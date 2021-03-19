@@ -14,6 +14,9 @@ import {
     DataExpressionMixinOptions
 } from './editor/ui.data_expression';
 
+/**
+ * @public
+*/
 export {
     ContentReadyEvent,
     ValueChangedEvent

@@ -11,18 +11,27 @@ import {
 } from '../events/index';
 
 interface BaseResizeEvent<T> extends BaseNativeEvent<T> {
-    width: number,
-    height: number,
+    readonly width: number,
+    readonly height: number,
     handles: {
-        left: boolean,
-        top: boolean,
-        right: boolean,
-        bottom: boolean
+        readonly left: boolean,
+        readonly top: boolean,
+        readonly right: boolean,
+        readonly bottom: boolean
     }
 }
 
+/**
+ * @public
+*/
 export interface ResizeEvent<T> extends BaseResizeEvent<T> {}
+/**
+ * @public
+*/
 export interface ResizeStartEvent<T> extends BaseResizeEvent<T> {}
+/**
+ * @public
+*/
 export interface ResizeEndEvent<T> extends BaseResizeEvent<T> {}
 
 export interface dxResizableOptions extends DOMComponentOptions<dxResizable> {

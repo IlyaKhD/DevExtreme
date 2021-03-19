@@ -20,6 +20,9 @@ import CollectionWidget, {
     SelectionChangedEvent
 } from './collection/ui.collection_widget.base';
 
+/**
+ * @public
+*/
 export {
     ItemHoldEvent,
     ItemClickEvent,

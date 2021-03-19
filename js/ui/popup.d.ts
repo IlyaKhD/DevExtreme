@@ -28,9 +28,15 @@ import dxOverlay, {
     ResizeStartEvent
 } from './overlay';
 
+/**
+ * @public
+*/
 export interface TitleRenderedEvent<T> extends BaseEvent<T> {
     titleElement: TElement
 }
+/**
+ * @public
+*/
 export {
     ShownEvent,
     HidindEvent,

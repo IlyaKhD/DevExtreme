@@ -28,6 +28,9 @@ import dxPopup, {
     ContentReadyEvent
 } from './popup';
 
+/**
+ * @public
+*/
 export {
     ShownEvent,
     HiddenEvent,

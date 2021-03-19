@@ -8,6 +8,9 @@ import Editor, {
     ValueChangedEvent
 } from './editor/editor';
 
+/**
+ * @public
+*/
 export {
     ContentReadyEvent,
     ValueChangedEvent

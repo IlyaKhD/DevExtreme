@@ -7,6 +7,9 @@ import Widget, {
     ContentReadyEvent
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export { ContentReadyEvent }
 export interface dxLoadIndicatorOptions extends WidgetOptions<dxLoadIndicator> {
     /**

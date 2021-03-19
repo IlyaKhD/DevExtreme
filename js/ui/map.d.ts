@@ -8,32 +8,52 @@ import {
 
 import {
   BaseEvent,
-  BaseNativeEvent,
-    TEvent
+  BaseNativeEvent
 } from '../events/index';
 
 import Widget, {
     WidgetOptions
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export interface ClickEvent<T> extends BaseNativeEvent<T> {}
+/**
+ * @public
+*/
 export interface MarkerAddedEvent<T> extends BaseEvent<T> {
-  options: any,
+  readonly options: any,
   originalMarker: any
 }
+/**
+ * @public
+*/
 export interface MarkerRemovedEvent<T> extends BaseEvent<T> {
-  options?: any
+  readonly options?: any
 }
+/**
+ * @public
+*/
 export interface RouteAddedEvent<T> extends BaseEvent<T> {
-  options: any,
+  readonly options: any,
   originalRoute: any
 }
+/**
+ * @public
+*/
 export interface RouteRemovedEvent<T> extends BaseEvent<T> {
-  options?: any
+  readonly options?: any
 }
+/**
+ * @public
+*/
 export interface ReadyEvent<T> extends BaseEvent<T> {
   originalMap: any
 }
+/**
+ * @public
+*/
 export interface MapLocation {
     /**
      * @docid
@@ -41,14 +61,14 @@ export interface MapLocation {
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    lat?: number;
+    lat: number;
     /**
      * @docid
      * @default 0
      * @prevFileNamespace DevExpress.ui
      * @public
      */
-    lng?: number;
+    lng: number;
 }
 
 export interface dxMapOptions extends WidgetOptions<dxMap> {

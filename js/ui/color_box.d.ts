@@ -25,6 +25,9 @@ import dxDropDownEditor, {
     ValueChangedEvent
 } from './drop_down_editor/ui.drop_down_editor';
 
+/**
+ * @public
+*/
 export {
     CutEvent,
     CopyEvent,

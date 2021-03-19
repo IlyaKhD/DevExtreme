@@ -6,7 +6,9 @@ import {
     dxButtonOptions
 } from './button';
 
-
+/**
+ * @public
+*/
 export interface CustomDialogOptions {
     title?: string,
     messageHtml?: string,

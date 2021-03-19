@@ -33,6 +33,9 @@ import {
     DataExpressionMixinOptions
 } from './editor/ui.data_expression';
 
+/**
+ * @public
+*/
 export {
     CutEvent,
     CopyEvent,
@@ -50,9 +53,12 @@ export {
     ContentReadyEvent,
     ValueChangedEvent
 }
+/**
+ * @public
+*/
 export interface ContentData {
     component: dxDropDownBox,
-    value?: any
+    readonly value?: any
 }
 export interface dxDropDownBoxOptions extends DataExpressionMixinOptions<dxDropDownBox>, dxDropDownEditorOptions<dxDropDownBox> {
     /**

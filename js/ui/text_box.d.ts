@@ -19,6 +19,9 @@ import dxTextEditor, {
     ValueChangedEvent
 } from './text_box/ui.text_editor.base';
 
+/**
+ * @public
+*/
 export {
     ChangeEvent,
     ContentReadyEvent,

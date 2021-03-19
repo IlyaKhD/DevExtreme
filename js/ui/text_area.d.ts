@@ -19,6 +19,9 @@ import dxTextBox, {
     ValueChangedEvent
 } from './text_box';
 
+/**
+ * @public
+*/
 export {
     CutEvent,
     CopyEvent,

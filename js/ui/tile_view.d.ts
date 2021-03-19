@@ -15,6 +15,9 @@ import CollectionWidget, {
     ItemContextMenuEvent
 } from './collection/ui.collection_widget.base';
 
+/**
+ * @public
+*/
 export {
     ItemHoldEvent,
     ItemClickEvent,

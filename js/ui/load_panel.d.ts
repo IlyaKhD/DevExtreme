@@ -20,6 +20,9 @@ import dxOverlay, {
     ContentReadyEvent
 } from './overlay';
 
+/**
+ * @public
+*/
 export {
     ShownEvent,
     HidindEvent,

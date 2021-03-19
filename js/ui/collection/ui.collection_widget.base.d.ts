@@ -22,9 +22,9 @@ import Widget, {
 
 export { ContentReadyEvent }
 export interface BaseItemEvent<T> extends BaseNativeEvent<T> {
-    itemData?: any,
+    readonly itemData?: any,
     itemElement: TElement,
-    itemIndex: number
+    readonly itemIndex: number
 }
 export interface ItemClickEvent<T> extends BaseItemEvent<T> {}
 export interface ItemContextMenuEvent<T> extends BaseItemEvent<T> {}
@@ -32,8 +32,8 @@ export interface ItemHoldEvent<T> extends BaseItemEvent<T> {}
 export interface ItemRenderedEvent<T> extends BaseItemEvent<T> {}
 
 export interface SelectionChangedEvent<T> extends BaseEvent<T> {
-    addedItems: Array<any>,
-    removedItems: Array<any>
+    readonly addedItems: Array<any>,
+    readonly removedItems: Array<any>
 }
 
 export interface CollectionWidgetOptions<T = CollectionWidget> extends WidgetOptions<T> {

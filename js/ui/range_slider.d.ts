@@ -10,14 +10,20 @@ import {
 
 import dxTrackBar from './track_bar';
 
+/**
+ * @public
+*/
 export {
     ContentReadyEvent,
     ValueChangedEvent
 }
+/**
+ * @public
+*/
 export interface ValueChangedEvent<T> extends SliderValueChangedEvent<T> {
-    start?: number,
-    end?: number,
-    value?: Array<number>
+    readonly start?: number,
+    readonly end?: number,
+    readonly value?: Array<number>
 }
 export interface dxRangeSliderOptions extends dxSliderBaseOptions<dxRangeSlider> {
     /**

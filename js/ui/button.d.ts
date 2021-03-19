@@ -15,13 +15,22 @@ import Widget, {
     ContentReadyEvent
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export interface ButtonData {
-    text?: string,
-    icon?: string
+    readonly text?: string,
+    readonly icon?: string
 }
+/**
+ * @public
+*/
 export interface ClickEvent<T> extends BaseNativeEvent<T> {
     validationGroup?: any
 }
+/**
+ * @public
+*/
 export { ContentReadyEvent }
 
 export interface dxButtonOptions extends WidgetOptions<dxButton> {

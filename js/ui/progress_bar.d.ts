@@ -12,10 +12,16 @@ import dxTrackBar, {
     ValueChangedEvent
 } from './track_bar';
 
+/**
+ * @public
+*/
 export {
     ContentReadyEvent,
     ValueChangedEvent
 }
+/**
+ * @public
+*/
 export interface CompleteEvent<T> extends BaseNativeEvent<T> {} 
 export interface dxProgressBarOptions extends dxTrackBarOptions<dxProgressBar> {
     /**

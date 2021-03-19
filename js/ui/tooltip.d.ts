@@ -11,6 +11,9 @@ import dxPopover, {
     ContentReadyEvent
 } from './popover';
 
+/**
+ * @public
+*/
 export {
     ShownEvent,
     HidindEvent,

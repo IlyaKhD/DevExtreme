@@ -37,53 +37,92 @@ import {
     SearchBoxMixinOptions
 } from './widget/ui.search_box_mixin';
 
+/**
+ * @public
+*/
 export {
     ItemRenderedEvent,
     SelectionChangedEvent,
     ContentReadyEvent
 }
+/**
+ * @public
+*/
 export interface GroupRenderedEvent<T> extends BaseEvent<T> {
-    groupData?: any,
-    groupElement?:TElement,
-    groupIndex?: number
+    readonly groupData?: any,
+    groupElement?: TElement,
+    readonly groupIndex?: number
 }
+/**
+ * @public
+*/
 export interface ItemClickEvent<T> extends BaseItemEvent<T> {
-    itemIndex: number | any
+    readonly itemIndex: number | any
 }
+/**
+ * @public
+*/
 export interface ItemContextMenuEvent<T> extends BaseItemEvent<T> {
-    itemIndex: number | any
+    readonly itemIndex: number | any
 }
+/**
+ * @public
+*/
 export interface ItemDeletedEvent<T> extends BaseItemEvent<T> {
-    itemIndex: number | any
+    readonly itemIndex: number | any
 }
+/**
+ * @public
+*/
 export interface ItemDeletingEvent<T> extends BaseItemEvent<T> {
-    itemIndex: number | any,
+    readonly itemIndex: number | any,
     cancel?: boolean | TPromise<void>
 }
+/**
+ * @public
+*/
 export interface ItemHoldEvent<T> extends BaseItemEvent<T> {
-    itemIndex: number | any,
+    readonly itemIndex: number | any,
     event?: TEvent
 }
+/**
+ * @public
+*/
 export interface ItemReorderedEvent<T> extends BaseItemEvent<T> {
-    itemIndex: number | any,
-    fromIndex: number,
-    toIndex: number
+    readonly itemIndex: number | any,
+    readonly fromIndex: number,
+    readonly toIndex: number
 }
+/**
+ * @public
+*/
 export interface ItemSwipeEvent<T> extends BaseItemEvent<T> {
-    itemIndex: number | any,
-    direction: string
+    readonly itemIndex: number | any,
+    readonly direction: string
 }
+/**
+ * @public
+*/
 export interface PageLoadingEvent<T> extends BaseEvent<T> {}
+/**
+ * @public
+*/
 export interface PullRefreshEvent<T> extends BaseEvent<T> {}
+/**
+ * @public
+*/
 export interface ScrollEvent<T> extends BaseNativeEvent<T> {
-    scrollOffset?: any,
-    reachedLeft: boolean,
-    reachedRight: boolean,
-    reachedTop: boolean,
-    reachedBottom: boolean
+    readonly scrollOffset?: any,
+    readonly reachedLeft: boolean,
+    readonly reachedRight: boolean,
+    readonly reachedTop: boolean,
+    readonly reachedBottom: boolean
 }
+/**
+ * @public
+*/
 export interface SelectAllValueChangedEvent<T> extends BaseEvent<T> {
-    value: boolean
+    readonly value: boolean
 }
 export interface dxListOptions extends CollectionWidgetOptions<dxList>, SearchBoxMixinOptions<dxList> {
     /**

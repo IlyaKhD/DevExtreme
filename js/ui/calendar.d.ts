@@ -12,19 +12,28 @@ import Editor, {
     ValueChangedEvent
 } from './editor/editor';
 
+/**
+ * @public
+*/
 export {
     ContentReadyEvent,
     ValueChangedEvent
 }
+/**
+ * @public
+*/
 export interface CellData {
-    date: Date,
-    view: string,
-    text?: string
+    readonly date: Date,
+    readonly view: string,
+    readonly text?: string
 }
+/**
+ * @public
+*/
 export interface DisabledDateData {
     component: any,
-    date: Date,
-    view: string
+    readonly date: Date,
+    readonly view: string
 }
 export interface dxCalendarOptions extends EditorOptions<dxCalendar> {
     /**

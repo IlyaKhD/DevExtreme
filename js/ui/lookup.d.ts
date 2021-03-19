@@ -38,6 +38,9 @@ import {
 } from './popover';
 import { TitleRenderedEvent } from './popup';
 
+/**
+ * @public
+*/
 export {
     ClosedEvent,
     OpenedEvent,

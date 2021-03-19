@@ -32,6 +32,9 @@ import dxDropDownList, {
 } from './drop_down_editor/ui.drop_down_list';
 import { BaseEvent } from '../events/index';
 
+/**
+ * @public
+*/
 export {
     ItemClickEvent,
     ValueChangedEvent,
@@ -51,9 +54,11 @@ export {
     KeyPressEvent,
     ContentReadyEvent
 }
-
+/**
+ * @public
+*/
 export interface CustomItemCreatingEvent<T> extends BaseEvent<T> {
-    text?: string,
+    readonly text?: string,
     customItem?: string | any | TPromise<any> 
 }
 export interface dxSelectBoxOptions<T = dxSelectBox> extends dxDropDownListOptions<T> {

@@ -34,15 +34,15 @@ import Widget, {
 
 export { ContentReadyEvent }
 export interface ButtonClickEvent<T> extends BaseNativeEvent<T> {
-    selectedItem?: any
+    readonly selectedItem?: any
 }
 export interface ItemClickEvent<T> extends BaseNativeEvent<T> {
-    itemData?: any,
+    readonly itemData?: any,
     itemElement?: TElement
 }
 export interface SelectionChangedEvent<T> extends BaseNativeEvent<T> {
-    item?: any,
-    previousItem?: any
+    readonly item?: any,
+    readonly previousItem?: any
 }
 export interface dxDropDownButtonOptions extends WidgetOptions<dxDropDownButton> {
     /**
