@@ -59,8 +59,8 @@ export {
  * @public
 */
 export interface SelectionChangedEvent<T> extends SelectBoxSelectionChangedEvent<T> {
-    readonly addedItems?: Array<string | number | any>,
-    readonly removedItems?: Array<string | number | any>
+    readonly addedItems: Array<string | number | any>,
+    readonly removedItems: Array<string | number | any>
 }
 /**
  * @public

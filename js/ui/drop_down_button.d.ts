@@ -32,17 +32,29 @@ import Widget, {
     ContentReadyEvent
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export { ContentReadyEvent }
+/**
+ * @public
+*/
 export interface ButtonClickEvent<T> extends BaseNativeEvent<T> {
     readonly selectedItem?: any
 }
+/**
+ * @public
+*/
 export interface ItemClickEvent<T> extends BaseNativeEvent<T> {
     readonly itemData?: any,
     itemElement?: TElement
 }
+/**
+ * @public
+*/
 export interface SelectionChangedEvent<T> extends BaseNativeEvent<T> {
-    readonly item?: any,
-    readonly previousItem?: any
+    readonly item: any,
+    readonly previousItem: any
 }
 export interface dxDropDownButtonOptions extends WidgetOptions<dxDropDownButton> {
     /**

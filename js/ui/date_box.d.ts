@@ -30,6 +30,9 @@ import {
     format
 } from './widget/ui.widget';
 
+/**
+ * @public
+*/
 export {
     CutEvent,
     CopyEvent,
