@@ -6,6 +6,8 @@ import { extend } from '../../core/utils/extend';
 import Widget from '../widget/ui.widget';
 import treeListCore from './ui.tree_list.core';
 import { isMaterial } from '../themes';
+import gridCoreUtils from '../grid_core/ui.grid_core.utils';
+
 const callModuleItemsMethod = treeListCore.callModuleItemsMethod;
 
 const DATAGRID_ROW_SELECTOR = '.dx-row';
@@ -71,6 +73,17 @@ const TreeList = Widget.inherit({
         return result;
     },
 
+    _setDeprecatedOptions() {
+        this.callBase();
+
+        if(this.disableDeprecationWarnings) { return; }
+
+        extend(this._deprecatedOptions, {
+            'headerFilter.allowSearch': { since: '23.1', message: 'Use the "headerFilter.search.enabled" option instead' },
+            'headerFilter.searchTimeout': { since: '23.1', message: 'Use the "headerFilter.search.timeout" option instead' },
+        });
+    },
+
     _defaultOptionsRules: function() {
         return this.callBase().concat([
             {
@@ -95,6 +108,10 @@ const TreeList = Widget.inherit({
         const that = this;
 
         that.callBase();
+
+        if(!this.disableDeprecationWarnings) {
+            gridCoreUtils.logColumnsDeprecatedWarningIfNeed(this.NAME, this.option('columns'));
+        }
 
         treeListCore.processModules(that, treeListCore);
 
