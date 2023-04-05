@@ -73,17 +73,6 @@ const TreeList = Widget.inherit({
         return result;
     },
 
-    _setDeprecatedOptions() {
-        this.callBase();
-
-        if(this.disableDeprecationWarnings) { return; }
-
-        extend(this._deprecatedOptions, {
-            'headerFilter.allowSearch': { since: '23.1', message: 'Use the "headerFilter.search.enabled" option instead' },
-            'headerFilter.searchTimeout': { since: '23.1', message: 'Use the "headerFilter.search.timeout" option instead' },
-        });
-    },
-
     _defaultOptionsRules: function() {
         return this.callBase().concat([
             {
@@ -109,8 +98,8 @@ const TreeList = Widget.inherit({
 
         that.callBase();
 
-        if(!this.disableDeprecationWarnings) {
-            gridCoreUtils.logColumnsDeprecatedWarningIfNeed(this.NAME, this.option('columns'));
+        if(!this.option('_disableDeprecationWarnings')) {
+            gridCoreUtils.logHeaderFilterDeprecatedWarningIfNeed(this);
         }
 
         treeListCore.processModules(that, treeListCore);
