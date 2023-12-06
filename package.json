@@ -2,6 +2,7 @@
   "name": "devextreme-monorepo",
   "version": "23.2.3",
   "license": "MIT",
+  "author": "Developer Express Inc.",
   "scripts": {
     "devextreme:inject-descriptions-to-bundle": "dx-tools inject-descriptions --target-path ./packages/devextreme/ts/dx.all.d.ts --artifacts ./artifacts/internal-tools",
     "devextreme:inject-descriptions-to-modules": "dx-tools inject-descriptions --collapse-tags --sources ./packages/devextreme/js --artifacts ./artifacts/internal-tools",
