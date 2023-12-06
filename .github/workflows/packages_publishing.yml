@@ -33,6 +33,9 @@ jobs:
           BUILD_INTERNAL_PACKAGE: true
         run: npm run all:build
 
+      - name: Build artifacts package
+        run: npm run ts-script build/make-artifacts-package
+
       - name: Publish to npm.pkg.github.com
         working-directory: artifacts/npm
         env:
@@ -42,7 +45,7 @@ jobs:
             tar -xzf ${filename};
             pushd package;
             npm init -y --scope ${{ github.repository_owner }};
-            sed -i '/\"repository\"/,/}/d' package.json;
+            npm pkg delete repository
             npm publish --quiet --registry https://npm.pkg.github.com;
             popd;
             rm -r package;
