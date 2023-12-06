@@ -22,6 +22,7 @@
     "regenerate-all": "nx run-many -t regenerate",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
+    "ts-script": "ts-node",
     "all:update-version": "ts-node build/update-version.ts",
     "all:build": "ts-node build/build-all.ts"
   },
