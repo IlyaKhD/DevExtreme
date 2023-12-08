@@ -3,9 +3,9 @@ name: Publishing to GitHub Packages
 on:
   workflow_dispatch:
     inputs:
-      pattern:
+      filter:
         type: string
-        description: Package file pattern
+        description: Package file filter pattern
         required: false
 
 jobs:
@@ -43,7 +43,7 @@ jobs:
       - name: Filter packages
         id: filter
         working-directory: artifacts/npm
-        run: ls *.tgz | grep -E -i '${{ inputs.pattern }}' | sed -r 's/^(.*)$/"\1"/g' | paste -sd "," - | sed -r 's/(.*)/packages=[\1]/' >> "$GITHUB_OUTPUT"
+        run: ls *.tgz | grep -E -i '${{ inputs.filter }}' | sed -r 's/^(.*)$/"\1"/g' | paste -sd "," - | sed -r 's/(.*)/packages=[\1]/' >> "$GITHUB_OUTPUT"
 
 
   publish:
