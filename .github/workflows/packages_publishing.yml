@@ -11,7 +11,7 @@ on:
 jobs:
 
   build:
-    name: Publish packages
+    name: Build packages
     runs-on: ubuntu-latest
     outputs:
       packages: ${{ steps.filter.outputs.packages }}
@@ -40,9 +40,12 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: packages
-          path: artifacts/npm/*.tgz
+          path: |
+            .npmrc
+            artifacts/npm/*.tgz
 
-      - id: filter
+      - name: Filter packages
+        id: filter
         working-directory: artifacts/npm
         run: ls *.tgz | grep -E -i '${{ inputs.pattern }}' | sed -r 's/^(.*)$/"\1"/g' | paste -sd "," - | sed -r 's/(.*)/packages=[\1]/' >> "$GITHUB_OUTPUT"
 
