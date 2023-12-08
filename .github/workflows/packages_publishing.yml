@@ -23,8 +23,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-          always-auth: true
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
@@ -40,9 +38,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: packages
-          path: |
-            .npmrc
-            artifacts/npm/*.tgz
+          path: artifacts/npm/*.tgz
 
       - name: Filter packages
         id: filter
@@ -62,13 +58,16 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: packages
+      - run: ls
       - name: Publish to npm.pkg.github.com
         env:
           PACKAGE: ${{ matrix.package }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTHOR: ${{ github.repository_owner }}
         run: |
-          tar -xzf $PACKAGE;
-          cd package;
-          npm init -y --scope ${{ github.repository_owner }};
+          tar -xzf $PACKAGE
+          cd package
+          npm init -y --scope $AUTHOR
           npm pkg delete repository
-          npm publish --quiet --registry https://npm.pkg.github.com;
+          echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" >> .npmrc
+          npm publish --quiet --registry https://npm.pkg.github.com
