@@ -7269,10 +7269,16 @@ declare module DevExpress.fileManagement {
    * [descr:CustomFileSystemProvider]
    */
   export class CustomFileSystemProvider extends FileSystemProviderBase {
-    constructor(options?: CustomFileSystemProviderOptions);
+    constructor(
+      options?: DevExpress.fileManagement.CustomFileSystemProvider.Options
+    );
+  }
+  module CustomFileSystemProvider {
+    export type Options = CustomFileSystemProviderOptions;
   }
   /**
    * [descr:CustomFileSystemProviderOptions]
+   * @deprecated [depNote:CustomFileSystemProviderOptions]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
   export interface CustomFileSystemProviderOptions
@@ -7555,10 +7561,16 @@ declare module DevExpress.fileManagement {
    * [descr:ObjectFileSystemProvider]
    */
   export class ObjectFileSystemProvider extends FileSystemProviderBase {
-    constructor(options?: ObjectFileSystemProviderOptions);
+    constructor(
+      options?: DevExpress.fileManagement.ObjectFileSystemProvider.Options
+    );
+  }
+  module ObjectFileSystemProvider {
+    export type Options = ObjectFileSystemProviderOptions;
   }
   /**
    * [descr:ObjectFileSystemProviderOptions]
+   * @deprecated [depNote:ObjectFileSystemProviderOptions]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
   export interface ObjectFileSystemProviderOptions
@@ -7580,10 +7592,16 @@ declare module DevExpress.fileManagement {
    * [descr:RemoteFileSystemProvider]
    */
   export class RemoteFileSystemProvider extends FileSystemProviderBase {
-    constructor(options?: RemoteFileSystemProviderOptions);
+    constructor(
+      options?: DevExpress.fileManagement.RemoteFileSystemProvider.Options
+    );
+  }
+  module RemoteFileSystemProvider {
+    export type Options = RemoteFileSystemProviderOptions;
   }
   /**
    * [descr:RemoteFileSystemProviderOptions]
+   * @deprecated [depNote:RemoteFileSystemProviderOptions]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
   export interface RemoteFileSystemProviderOptions
@@ -7642,24 +7660,6 @@ declare module DevExpress.fileManagement {
      */
     chunkIndex: number;
   }
-}
-declare module DevExpress.fileManagement.CustomFileSystemProvider {
-  /**
-   * @deprecated Use CustomFileSystemProviderOptions from /common/file_management instead
-   */
-  export type Options = CustomFileSystemProviderOptions;
-}
-declare module DevExpress.fileManagement.ObjectFileSystemProvider {
-  /**
-   * @deprecated Use ObjectFileSystemProviderOptions from /common/file_management instead
-   */
-  export type Options = ObjectFileSystemProviderOptions;
-}
-declare module DevExpress.fileManagement.RemoteFileSystemProvider {
-  /**
-   * @deprecated Use RemoteFileSystemProviderOptions from /common/file_management instead
-   */
-  export type Options = RemoteFileSystemProviderOptions;
 }
 declare module DevExpress.localization {
   /**
