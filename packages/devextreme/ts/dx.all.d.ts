@@ -7153,7 +7153,7 @@ declare module DevExpress.excelExporter {
    * [descr:CellAddress]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
-  export interface CellAddress {
+  interface CellAddress {
     /**
      * [descr:CellAddress.row]
      */
@@ -7167,7 +7167,7 @@ declare module DevExpress.excelExporter {
    * [descr:CellRange]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
-  export interface CellRange {
+  interface CellRange {
     /**
      * [descr:CellRange.from]
      */
@@ -7179,15 +7179,10 @@ declare module DevExpress.excelExporter {
   }
   export type DataGridCell = ExcelDataGridCell;
   /**
-   * @public
-   * @namespace DevExpress.excelExporter
-   */
-  DataGridCell;
-  /**
    * @deprecated Use DataGridCell instead
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
-  export interface ExcelDataGridCell {
+  interface ExcelDataGridCell {
     /**
      * [descr:ExcelDataGridCell.column]
      */
@@ -7230,7 +7225,7 @@ declare module DevExpress.excelExporter {
    * [descr:ExcelExportBaseProps]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
-  export interface ExcelExportBaseProps {
+  interface ExcelExportBaseProps {
     /**
      * [descr:ExcelExportBaseProps.worksheet]
      */
@@ -7255,7 +7250,7 @@ declare module DevExpress.excelExporter {
   /**
    * [descr:ExcelExportDataGridProps]
    */
-  export interface ExcelExportDataGridProps extends ExcelExportBaseProps {
+  interface ExcelExportDataGridProps extends ExcelExportBaseProps {
     /**
      * [descr:ExcelExportDataGridProps.component]
      */
@@ -7277,17 +7272,10 @@ declare module DevExpress.excelExporter {
     }) => void;
   }
   /**
-   * @docid
-   * @public
-   * @namespace DevExpress.excelExporter
-   * @inherits ExcelExportBaseProps
-   */
-  ExcelExportDataGridProps;
-  /**
    * [descr:ExcelExportPivotGridProps]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
-  export interface ExcelExportPivotGridProps extends ExcelExportBaseProps {
+  interface ExcelExportPivotGridProps extends ExcelExportBaseProps {
     /**
      * [descr:ExcelExportPivotGridProps.component]
      */
@@ -7328,7 +7316,7 @@ declare module DevExpress.excelExporter {
    * @deprecated Use PivotGridCell instead
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
-  export interface ExcelPivotGridCell extends DevExpress.ui.dxPivotGrid.Cell {
+  interface ExcelPivotGridCell extends DevExpress.ui.dxPivotGrid.Cell {
     /**
      * [descr:ExcelPivotGridCell.area]
      */
@@ -7353,35 +7341,12 @@ declare module DevExpress.excelExporter {
     options: ExcelExportDataGridProps
   ): DevExpress.core.utils.DxPromise<CellRange>;
   /**
-   * @docid excelExporter.exportDataGrid
-   * @publicName exportDataGrid(options)
-   * @return Promise<CellRange>
-   * @namespace DevExpress.excelExporter
-   * @static
-   * @public
-   */
-  exportDataGrid;
-  /**
    * [descr:excelExporter.exportPivotGrid(options)]
    */
   export function exportPivotGrid(
     options: ExcelExportPivotGridProps
   ): DevExpress.core.utils.DxPromise<CellRange>;
-  /**
-   * @docid excelExporter.exportPivotGrid
-   * @publicName exportPivotGrid(options)
-   * @return Promise<CellRange>
-   * @namespace DevExpress.excelExporter
-   * @static
-   * @public
-   */
-  exportPivotGrid;
   export type PivotGridCell = ExcelPivotGridCell;
-  /**
-   * @public
-   * @namespace DevExpress.excelExporter
-   */
-  PivotGridCell;
 }
 declare module DevExpress.fileManagement {
   /**

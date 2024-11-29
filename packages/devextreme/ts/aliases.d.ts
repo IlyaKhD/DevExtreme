@@ -823,3 +823,22 @@ declare namespace DevExpress.common.grids {
   /** @deprecated Use DevExpress.common.DisplayMode instead */
   export type PagerDisplayMode = DisplayMode;
 }
+
+
+declare namespace DevExpress.excelExporter {
+  /** @deprecated */
+  export type ExcelExportDataGridProps = Parameters<typeof exportDataGrid>[0];
+  /** @deprecated */
+  export type ExcelExportPivotGridProps = Parameters<typeof exportPivotGrid>[0];
+  /** @deprecated */
+  export type ExcelDataGridCell = DataGridCell;
+  /** @deprecated */
+  export type ExcelPivotGridCell = PivotGridCell;
+  /** @deprecated */
+  export type CellRange = ReturnType<typeof exportDataGrid> extends DevExpress.core.utils.DxPromise<infer T> ? T : any;
+  /** @deprecated */
+  export type CellAddress = Required<CellRange>['from'];
+  /** @deprecated */
+  export type ExcelExportBaseProps = Pick<ExcelExportDataGridProps, 'worksheet' | 'topLeftCell' | 'keepColumnWidths' | 'loadPanel' | 'encodeExecutableContent'>;
+
+}
