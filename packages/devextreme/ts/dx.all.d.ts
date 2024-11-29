@@ -6816,7 +6816,7 @@ declare module DevExpress.data.utils.odata {
 }
 declare module DevExpress.events {
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:AsyncCancelable]
    */
   export type AsyncCancelable = {
     /**
@@ -6825,7 +6825,7 @@ declare module DevExpress.events {
     cancel: boolean | PromiseLike<boolean>;
   };
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:Cancelable]
    */
   export interface Cancelable {
     /**
@@ -6834,7 +6834,7 @@ declare module DevExpress.events {
     cancel?: boolean;
   }
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:ChangedOptionInfo]
    */
   export interface ChangedOptionInfo {
     /**
@@ -6869,7 +6869,7 @@ declare module DevExpress.events {
    */
   type event = DxEvent;
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:EventInfo]
    */
   export interface EventInfo<TComponent> {
     /**
@@ -6886,7 +6886,7 @@ declare module DevExpress.events {
     readonly model?: any;
   }
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:EventObject]
    */
   type EventObject = {
     /**
@@ -6943,7 +6943,7 @@ declare module DevExpress.events {
    */
   interface EventType {}
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:InitializedEventInfo]
    */
   export interface InitializedEventInfo<TComponent> {
     /**
@@ -6956,7 +6956,7 @@ declare module DevExpress.events {
     readonly element?: DevExpress.core.DxElement;
   }
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:ItemInfo]
    */
   export interface ItemInfo<TItemData = any> {
     /**
@@ -6973,7 +6973,7 @@ declare module DevExpress.events {
     readonly itemIndex: number;
   }
   /**
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+   * [descr:NativeEventInfo]
    */
   export interface NativeEventInfo<TComponent, TNativeEvent = Event> {
     /**
