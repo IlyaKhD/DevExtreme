@@ -7182,7 +7182,7 @@ declare module DevExpress.excelExporter {
    * @public
    * @namespace DevExpress.excelExporter
    */
-  DataGridCell;
+  export type DataGridCell = ExcelDataGridCell;
   /**
    * @deprecated Use DataGridCell instead
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
@@ -7277,13 +7277,6 @@ declare module DevExpress.excelExporter {
     }) => void;
   }
   /**
-   * @docid
-   * @public
-   * @namespace DevExpress.excelExporter
-   * @inherits ExcelExportBaseProps
-   */
-  ExcelExportDataGridProps;
-  /**
    * [descr:ExcelExportPivotGridProps]
    * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
    */
@@ -7353,35 +7346,17 @@ declare module DevExpress.excelExporter {
     options: ExcelExportDataGridProps
   ): DevExpress.core.utils.DxPromise<CellRange>;
   /**
-   * @docid excelExporter.exportDataGrid
-   * @publicName exportDataGrid(options)
-   * @return Promise<CellRange>
-   * @namespace DevExpress.excelExporter
-   * @static
-   * @public
-   */
-  exportDataGrid;
-  /**
    * [descr:excelExporter.exportPivotGrid(options)]
    */
   export function exportPivotGrid(
     options: ExcelExportPivotGridProps
   ): DevExpress.core.utils.DxPromise<CellRange>;
-  /**
-   * @docid excelExporter.exportPivotGrid
-   * @publicName exportPivotGrid(options)
-   * @return Promise<CellRange>
-   * @namespace DevExpress.excelExporter
-   * @static
-   * @public
-   */
-  exportPivotGrid;
   export type PivotGridCell = ExcelPivotGridCell;
   /**
    * @public
    * @namespace DevExpress.excelExporter
    */
-  PivotGridCell;
+  export type PivotGridCell = ExcelPivotGridCell;
 }
 declare module DevExpress.fileManagement {
   /**
