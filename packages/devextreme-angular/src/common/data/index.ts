@@ -33,3 +33,5 @@ export {
     Store,
     StoreOptions,
 } from 'devextreme/common/data';
+
+export * as CustomStore from "./custom-store";
