@@ -23,6 +23,7 @@ export * from './file-uploader-options';
 export * from './filter-builder-custom-operation-dxi';
 export * from './filter-builder-field-dxi';
 export * from './filter-builder-options';
+export * from './foo';
 export * from './form-options';
 export * from './form-simple-item';
 export * from './format';

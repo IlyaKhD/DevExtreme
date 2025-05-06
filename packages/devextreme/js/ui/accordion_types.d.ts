@@ -1,4 +1,5 @@
 export {
+  Foo,
   ContentReadyEvent,
   DisposingEvent,
   InitializedEvent,

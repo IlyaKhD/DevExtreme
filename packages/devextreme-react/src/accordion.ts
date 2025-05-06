@@ -75,6 +75,7 @@ const Accordion = memo(
       }), []);
 
       const expectedChildren = useMemo(() => ({
+        foo: { optionName: "foo", isCollectionItem: false },
         item: { optionName: "items", isCollectionItem: true }
       }), []);
 
@@ -107,6 +108,25 @@ const Accordion = memo(
   ),
 ) as <TItem = any, TKey = any>(props: React.PropsWithChildren<IAccordionOptions<TItem, TKey>> & { ref?: Ref<AccordionRef<TItem, TKey>> }) => ReactElement | null;
 
+
+// owners:
+// Accordion
+type IFooProps = React.PropsWithChildren<{
+  a?: string;
+  b?: string;
+}>
+const _componentFoo = (props: IFooProps) => {
+  return React.createElement(NestedOption<IFooProps>, {
+    ...props,
+    elementDescriptor: {
+      OptionName: "foo",
+    },
+  });
+};
+
+const Foo = Object.assign<typeof _componentFoo, NestedComponentMeta>(_componentFoo, {
+  componentType: "option",
+});
 
 // owners:
 // Accordion
@@ -152,6 +172,8 @@ export {
   Accordion,
   IAccordionOptions,
   AccordionRef,
+  Foo,
+  IFooProps,
   Item,
   IItemProps
 };

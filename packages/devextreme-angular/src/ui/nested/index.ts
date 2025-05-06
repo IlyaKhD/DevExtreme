@@ -78,6 +78,7 @@ export * from './filter-operation-descriptions';
 export * from './filter-panel';
 export * from './filter-row';
 export * from './font';
+export * from './foo';
 export * from './form-item';
 export * from './form';
 export * from './format';

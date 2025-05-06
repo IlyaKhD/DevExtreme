@@ -60,6 +60,7 @@ const Box = memo(
       }), []);
 
       const expectedChildren = useMemo(() => ({
+        foo: { optionName: "foo", isCollectionItem: false },
         item: { optionName: "items", isCollectionItem: true }
       }), []);
 
@@ -87,6 +88,25 @@ const Box = memo(
   ),
 ) as <TItem = any, TKey = any>(props: React.PropsWithChildren<IBoxOptions<TItem, TKey>> & { ref?: Ref<BoxRef<TItem, TKey>> }) => ReactElement | null;
 
+
+// owners:
+// Box
+type IFooProps = React.PropsWithChildren<{
+  a?: string;
+  b?: string;
+}>
+const _componentFoo = (props: IFooProps) => {
+  return React.createElement(NestedOption<IFooProps>, {
+    ...props,
+    elementDescriptor: {
+      OptionName: "foo",
+    },
+  });
+};
+
+const Foo = Object.assign<typeof _componentFoo, NestedComponentMeta>(_componentFoo, {
+  componentType: "option",
+});
 
 // owners:
 // Box
@@ -127,6 +147,8 @@ export {
   Box,
   IBoxOptions,
   BoxRef,
+  Foo,
+  IFooProps,
   Item,
   IItemProps
 };

@@ -43,6 +43,7 @@ import { DxiItemComponent } from './item-dxi';
         'direction',
         'disabled',
         'elementAttr',
+        'foo',
         'height',
         'hoverStateEnabled',
         'itemHoldTimeout',

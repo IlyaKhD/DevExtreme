@@ -27,6 +27,7 @@ import DataSource from 'devextreme/data/data_source';
 import { Distribution, CrosswiseDistribution, dxBoxItem, BoxDirection, ContentReadyEvent, DisposingEvent, InitializedEvent, ItemClickEvent, ItemContextMenuEvent, ItemHoldEvent, ItemRenderedEvent, OptionChangedEvent } from 'devextreme/ui/box';
 import { DataSourceOptions } from 'devextreme/data/data_source';
 import { Store } from 'devextreme/data/store';
+import { Foo } from 'devextreme/ui/accordion';
 
 import DxBox from 'devextreme/ui/box';
 
@@ -41,9 +42,11 @@ import {
     WatcherHelper
 } from 'devextreme-angular/core';
 
+import { DxoFooModule } from 'devextreme-angular/ui/nested';
 import { DxiItemModule } from 'devextreme-angular/ui/nested';
 import { DxoBoxModule } from 'devextreme-angular/ui/nested';
 
+import { DxoBoxFooModule } from 'devextreme-angular/ui/box/nested';
 import { DxiBoxItemModule } from 'devextreme-angular/ui/box/nested';
 
 import { DxiItemComponent } from 'devextreme-angular/ui/nested';
@@ -146,6 +149,19 @@ export class DxBoxComponent<TItem = any, TKey = any> extends DxComponent impleme
     }
     set elementAttr(value: Record<string, any>) {
         this._setOption('elementAttr', value);
+    }
+
+
+    /**
+     * [descr:dxBoxOptions.foo]
+    
+     */
+    @Input()
+    get foo(): Foo {
+        return this._getOption('foo');
+    }
+    set foo(value: Foo) {
+        this._setOption('foo', value);
     }
 
 
@@ -363,6 +379,13 @@ export class DxBoxComponent<TItem = any, TKey = any> extends DxComponent impleme
      * This member supports the internal infrastructure and is not intended to be used directly from your code.
     
      */
+    @Output() fooChange: EventEmitter<Foo>;
+
+    /**
+    
+     * This member supports the internal infrastructure and is not intended to be used directly from your code.
+    
+     */
     @Output() heightChange: EventEmitter<(() => number | string) | number | string | undefined>;
 
     /**
@@ -461,6 +484,7 @@ export class DxBoxComponent<TItem = any, TKey = any> extends DxComponent impleme
             { emit: 'directionChange' },
             { emit: 'disabledChange' },
             { emit: 'elementAttrChange' },
+            { emit: 'fooChange' },
             { emit: 'heightChange' },
             { emit: 'hoverStateEnabledChange' },
             { emit: 'itemHoldTimeoutChange' },
@@ -518,16 +542,20 @@ export class DxBoxComponent<TItem = any, TKey = any> extends DxComponent impleme
 @NgModule({
   imports: [
     DxBoxComponent,
+    DxoFooModule,
     DxiItemModule,
     DxoBoxModule,
+    DxoBoxFooModule,
     DxiBoxItemModule,
     DxIntegrationModule,
     DxTemplateModule
   ],
   exports: [
     DxBoxComponent,
+    DxoFooModule,
     DxiItemModule,
     DxoBoxModule,
+    DxoBoxFooModule,
     DxiBoxItemModule,
     DxTemplateModule
   ]

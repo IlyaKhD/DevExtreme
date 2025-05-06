@@ -1,5 +1,6 @@
 export {
   Mode,
+  Foo,
   Distribution,
   CrosswiseDistribution,
   BoxDirection,

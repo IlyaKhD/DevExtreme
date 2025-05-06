@@ -8838,6 +8838,15 @@ declare module DevExpress.ui {
       SelectionChangedEvent: SelectionChangedEvent<TItem, TKey>;
     };
     /**
+     * [descr:Foo]
+     */
+    export type Foo = {
+      /**
+       * [descr:Foo.a]
+       */
+      a: string;
+    };
+    /**
      * [descr:_ui_accordion_InitializedEvent]
      */
     export type InitializedEvent<
@@ -8951,6 +8960,10 @@ declare module DevExpress.ui {
     TItem extends DevExpress.ui.dxAccordion.ItemLike = any,
     TKey = any
   > extends CollectionWidgetOptions<dxAccordion<TItem, TKey>, TItem, TKey> {
+    /**
+     * [descr:dxAccordionOptions.foo]
+     */
+    foo?: DevExpress.ui.dxAccordion.Foo;
     /**
      * [descr:dxAccordionOptions.animationDuration]
      */
@@ -9439,6 +9452,15 @@ declare module DevExpress.ui {
       OptionChangedEvent: OptionChangedEvent<TItem, TKey>;
     };
     /**
+     * [descr:Foo]
+     */
+    export type Foo = {
+      /**
+       * [descr:Foo.b]
+       */
+      b: string;
+    };
+    /**
      * [descr:_ui_box_InitializedEvent]
      */
     export type InitializedEvent<
@@ -9533,6 +9555,10 @@ declare module DevExpress.ui {
     TItem extends DevExpress.ui.dxBox.ItemLike<TKey> = any,
     TKey = any
   > extends CollectionWidgetOptions<dxBox<TItem, TKey>, TItem, TKey> {
+    /**
+     * [descr:dxBoxOptions.foo]
+     */
+    foo?: DevExpress.ui.dxBox.Foo;
     /**
      * [descr:dxBoxOptions.align]
      */

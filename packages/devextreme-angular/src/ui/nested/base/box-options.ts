@@ -7,6 +7,7 @@ import {
 
 import { Store } from 'devextreme/data';
 import DataSource, { Options as DataSourceOptions } from 'devextreme/data/data_source';
+import { Foo } from 'devextreme/ui/accordion';
 import { BoxDirection, ContentReadyEvent, CrosswiseDistribution, DisposingEvent, Distribution, dxBoxItem, InitializedEvent, ItemClickEvent, ItemContextMenuEvent, ItemHoldEvent, ItemRenderedEvent, OptionChangedEvent, Properties as dxBoxOptions } from 'devextreme/ui/box';
 
 @Component({
@@ -53,6 +54,13 @@ export abstract class DxoBoxOptions extends NestedOption {
     }
     set elementAttr(value: any) {
         this._setOption('elementAttr', value);
+    }
+
+    get foo(): Foo {
+        return this._getOption('foo');
+    }
+    set foo(value: Foo) {
+        this._setOption('foo', value);
     }
 
     get height(): number | Function | string | undefined {

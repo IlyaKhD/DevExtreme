@@ -6,6 +6,7 @@ import Accordion, { Properties } from "devextreme/ui/accordion";
 import  DataSource from "devextreme/data/data_source";
 import {
  dxAccordionItem,
+ Foo,
  ContentReadyEvent,
  DisposingEvent,
  InitializedEvent,
@@ -35,6 +36,7 @@ type AccessibleOptions = Pick<Properties,
   "disabled" |
   "elementAttr" |
   "focusStateEnabled" |
+  "foo" |
   "height" |
   "hint" |
   "hoverStateEnabled" |
@@ -81,6 +83,7 @@ const componentConfig = {
     disabled: Boolean,
     elementAttr: Object as PropType<Record<string, any>>,
     focusStateEnabled: Boolean,
+    foo: Object as PropType<Foo | Record<string, any>>,
     height: [Function, Number, String] as PropType<((() => number | string)) | number | string>,
     hint: String,
     hoverStateEnabled: Boolean,
@@ -123,6 +126,7 @@ const componentConfig = {
     "update:disabled": null,
     "update:elementAttr": null,
     "update:focusStateEnabled": null,
+    "update:foo": null,
     "update:height": null,
     "update:hint": null,
     "update:hoverStateEnabled": null,
@@ -162,6 +166,7 @@ const componentConfig = {
     (this as any).$_WidgetClass = Accordion;
     (this as any).$_hasAsyncTemplate = true;
     (this as any).$_expectedChildren = {
+      foo: { isCollectionItem: false, optionName: "foo" },
       item: { isCollectionItem: true, optionName: "items" }
     };
   }
@@ -171,6 +176,25 @@ prepareComponentConfig(componentConfig);
 
 const DxAccordion = defineComponent(componentConfig);
 
+
+const DxFooConfig = {
+  emits: {
+    "update:isActive": null,
+    "update:hoveredElement": null,
+    "update:a": null,
+    "update:b": null,
+  },
+  props: {
+    a: String,
+    b: String
+  }
+};
+
+prepareConfigurationComponentConfig(DxFooConfig);
+
+const DxFoo = defineComponent(DxFooConfig);
+
+(DxFoo as any).$_optionName = "foo";
 
 const DxItemConfig = {
   emits: {
@@ -207,6 +231,7 @@ const DxItem = defineComponent(DxItemConfig);
 export default DxAccordion;
 export {
   DxAccordion,
+  DxFoo,
   DxItem
 };
 import type * as DxAccordionTypes from "devextreme/ui/accordion_types";

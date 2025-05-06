@@ -24,7 +24,7 @@ import {
 export { ExplicitTypes } from 'devextreme/ui/accordion';
 
 import DataSource from 'devextreme/data/data_source';
-import { dxAccordionItem, ContentReadyEvent, DisposingEvent, InitializedEvent, ItemClickEvent, ItemContextMenuEvent, ItemHoldEvent, ItemRenderedEvent, ItemTitleClickEvent, OptionChangedEvent, SelectionChangedEvent } from 'devextreme/ui/accordion';
+import { dxAccordionItem, Foo, ContentReadyEvent, DisposingEvent, InitializedEvent, ItemClickEvent, ItemContextMenuEvent, ItemHoldEvent, ItemRenderedEvent, ItemTitleClickEvent, OptionChangedEvent, SelectionChangedEvent } from 'devextreme/ui/accordion';
 import { DataSourceOptions } from 'devextreme/data/data_source';
 import { Store } from 'devextreme/data/store';
 
@@ -41,8 +41,10 @@ import {
     WatcherHelper
 } from 'devextreme-angular/core';
 
+import { DxoFooModule } from 'devextreme-angular/ui/nested';
 import { DxiItemModule } from 'devextreme-angular/ui/nested';
 
+import { DxoAccordionFooModule } from 'devextreme-angular/ui/accordion/nested';
 import { DxiAccordionItemModule } from 'devextreme-angular/ui/accordion/nested';
 
 import { DxiItemComponent } from 'devextreme-angular/ui/nested';
@@ -184,6 +186,19 @@ export class DxAccordionComponent<TItem = any, TKey = any> extends DxComponent i
     }
     set focusStateEnabled(value: boolean) {
         this._setOption('focusStateEnabled', value);
+    }
+
+
+    /**
+     * [descr:dxAccordionOptions.foo]
+    
+     */
+    @Input()
+    get foo(): Foo {
+        return this._getOption('foo');
+    }
+    set foo(value: Foo) {
+        this._setOption('foo', value);
     }
 
 
@@ -581,6 +596,13 @@ export class DxAccordionComponent<TItem = any, TKey = any> extends DxComponent i
      * This member supports the internal infrastructure and is not intended to be used directly from your code.
     
      */
+    @Output() fooChange: EventEmitter<Foo>;
+
+    /**
+    
+     * This member supports the internal infrastructure and is not intended to be used directly from your code.
+    
+     */
     @Output() heightChange: EventEmitter<(() => number | string) | number | string | undefined>;
 
     /**
@@ -761,6 +783,7 @@ export class DxAccordionComponent<TItem = any, TKey = any> extends DxComponent i
             { emit: 'disabledChange' },
             { emit: 'elementAttrChange' },
             { emit: 'focusStateEnabledChange' },
+            { emit: 'fooChange' },
             { emit: 'heightChange' },
             { emit: 'hintChange' },
             { emit: 'hoverStateEnabledChange' },
@@ -833,14 +856,18 @@ export class DxAccordionComponent<TItem = any, TKey = any> extends DxComponent i
 @NgModule({
   imports: [
     DxAccordionComponent,
+    DxoFooModule,
     DxiItemModule,
+    DxoAccordionFooModule,
     DxiAccordionItemModule,
     DxIntegrationModule,
     DxTemplateModule
   ],
   exports: [
     DxAccordionComponent,
+    DxoFooModule,
     DxiItemModule,
+    DxoAccordionFooModule,
     DxiAccordionItemModule,
     DxTemplateModule
   ]

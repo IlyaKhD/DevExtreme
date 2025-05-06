@@ -25,6 +25,9 @@ import {
 import {
  Store,
 } from "devextreme/data/store";
+import {
+ Foo,
+} from "devextreme/ui/accordion";
 import { prepareConfigurationComponentConfig } from "./core/index";
 
 type AccessibleOptions = Pick<Properties,
@@ -34,6 +37,7 @@ type AccessibleOptions = Pick<Properties,
   "direction" |
   "disabled" |
   "elementAttr" |
+  "foo" |
   "height" |
   "hoverStateEnabled" |
   "itemHoldTimeout" |
@@ -64,6 +68,7 @@ const componentConfig = {
     direction: String as PropType<BoxDirection>,
     disabled: Boolean,
     elementAttr: Object as PropType<Record<string, any>>,
+    foo: Object as PropType<Foo | Record<string, any>>,
     height: [Function, Number, String] as PropType<((() => number | string)) | number | string>,
     hoverStateEnabled: Boolean,
     itemHoldTimeout: Number,
@@ -90,6 +95,7 @@ const componentConfig = {
     "update:direction": null,
     "update:disabled": null,
     "update:elementAttr": null,
+    "update:foo": null,
     "update:height": null,
     "update:hoverStateEnabled": null,
     "update:itemHoldTimeout": null,
@@ -116,6 +122,7 @@ const componentConfig = {
     (this as any).$_WidgetClass = Box;
     (this as any).$_hasAsyncTemplate = true;
     (this as any).$_expectedChildren = {
+      foo: { isCollectionItem: false, optionName: "foo" },
       item: { isCollectionItem: true, optionName: "items" }
     };
   }
@@ -125,6 +132,25 @@ prepareComponentConfig(componentConfig);
 
 const DxBox = defineComponent(componentConfig);
 
+
+const DxFooConfig = {
+  emits: {
+    "update:isActive": null,
+    "update:hoveredElement": null,
+    "update:a": null,
+    "update:b": null,
+  },
+  props: {
+    a: String,
+    b: String
+  }
+};
+
+prepareConfigurationComponentConfig(DxFooConfig);
+
+const DxFoo = defineComponent(DxFooConfig);
+
+(DxFoo as any).$_optionName = "foo";
 
 const DxItemConfig = {
   emits: {
@@ -163,6 +189,7 @@ const DxItem = defineComponent(DxItemConfig);
 export default DxBox;
 export {
   DxBox,
+  DxFoo,
   DxItem
 };
 import type * as DxBoxTypes from "devextreme/ui/box_types";
