@@ -23,6 +23,18 @@ export {
     Mode,
 };
 
+/**
+ * @public
+ * @docid
+ */
+export type Foo = {
+    /**
+     * @public
+     * @docid
+     */
+    b: string;
+}
+
 /** @public */
 export type Distribution = 'center' | 'end' | 'space-around' | 'space-between' | 'start';
 /** @public */
@@ -104,6 +116,11 @@ export interface dxBoxOptions<
     TItem extends ItemLike<TKey> = any,
     TKey = any,
 > extends CollectionWidgetOptions<dxBox<TItem, TKey>, TItem, TKey> {
+    /**
+     * @public
+     * @docid
+     */
+    foo?: Foo;
     /**
      * @docid
      * @default 'start'

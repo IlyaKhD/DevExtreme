@@ -26,6 +26,18 @@ import CollectionWidget, {
     SelectionChangeInfo,
 } from './collection/ui.collection_widget.base';
 
+/**
+ * @public
+ * @docid
+ */
+export type Foo = {
+    /**
+     * @public
+     * @docid
+     */
+    a: string;
+}
+
 type ItemLike = string | Item | any;
 
 /**
@@ -118,6 +130,11 @@ export interface dxAccordionOptions<
     TItem extends ItemLike = any,
     TKey = any,
 > extends CollectionWidgetOptions<dxAccordion<TItem, TKey>, TItem, TKey> {
+    /**
+     * @public
+     * @docid
+     */
+    foo?: Foo;
     /**
      * @docid
      * @default 300
