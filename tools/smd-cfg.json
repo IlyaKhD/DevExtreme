@@ -47,24 +47,6 @@
             "uid": "ui/toolbar:dxToolbarItem\\.(widget|options)"
         },
         {
-            "kind": "remove",
-            "uid": "ui/scheduler:ToolbarItem\\.(name|options)"
-        },
-        {
-            "kind": "add",
-            "uid": "ui/scheduler:ToolbarItem.name",
-            "types": [
-                {
-                    "kind": "memberRef",
-                    "uid": "ui/scheduler:SchedulerPredefinedToolbarItem"
-                },
-                {
-                    "kind": "string",
-                    "name": "String"
-                }
-            ]
-        },
-        {
             "kind": "add",
             "uid": "ui/toolbar:dxToolbarItem.widget",
             "types": [
@@ -97,6 +79,24 @@
                             "uid": "ui/popover:ToolbarItem"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "kind": "remove",
+            "uid": "ui/scheduler:ToolbarItem\\.(name|options)"
+        },
+        {
+            "kind": "add",
+            "uid": "ui/scheduler:ToolbarItem.name",
+            "types": [
+                {
+                    "kind": "memberRef",
+                    "uid": "ui/scheduler:SchedulerPredefinedToolbarItem"
+                },
+                {
+                    "kind": "string",
+                    "name": "String"
                 }
             ]
         }
