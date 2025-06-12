@@ -19,7 +19,7 @@
             "kind": "remove",
             "uid": "/html_editor:AICommand"
         },
-        {
+{
             "kind": "remove",
             "uid": "/scheduler:DateNavigatorItemProperties"
         },
@@ -52,7 +52,7 @@
         },
         {
             "kind": "add",
-            "uid": "ui/scheduler:ToolbarItem\\.name",
+            "uid": "ui/scheduler:ToolbarItem.name",
             "types": [
                 {
                     "kind": "memberRef",
