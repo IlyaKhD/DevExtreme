@@ -3,6 +3,7 @@
 ## Instruction files
 Use these instructions:
  - [general instructions](./instructions/general.instructions.md)
+ - [nx instructions](./instructions/nx.instructions.md)
  - [local instructions](./instructions/local.instructions.md)
 
 **Rule 1.1**: in the case of a conflict between the instructions, the local instructions take precedence.
