@@ -6,14 +6,6 @@ Use these instructions:
  - [nx instructions](./instructions/nx.instructions.md)
  - [local instructions](./instructions/local.instructions.md)
 
-**Rule 1.1**: in the case of a conflict between the instructions, the local instructions take precedence.
+**Important**: In the case if a contradiction between the instructions, that can't be resolved from context, ask the user which instruction to follow, print instruction file names. Do not assume which instruction is more important. If the user does not know, ask them to check the instructions files and resolve the contradiction themselves.
 
-## Instruction Troubleshooting
-- If the user asks to **list instructions**, list all the existing and non-empty instruction files you are aware of.
-- If the user asks to **validate instructions**, do the following:
-  - Ignore **Rule 1.1**.
-  - List all contradictory instructions you are aware of. If the contradiction is resolved mark it with "✅", otherwise mark it with "⚠️". For each contradiction:
-    - Print relative workspace file paths and the line numbers where the instruction is located.
-    - For each unresolved contradiction, propose a resolution.
-      - If the contradiction emerges from the [local instructions](./instructions/local.instructions.md), propose changes in the [local instructions](./instructions/local.instructions.md) file that will reduce its scope.
-  - Print summary of detected contradictions: total (resolved and unresolved), resolved, unresolved.
+
